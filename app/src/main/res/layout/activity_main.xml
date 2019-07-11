@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#cfd8dc"
     tools:context=".MainActivity">
 
     <include
@@ -15,24 +15,28 @@
         android:id="@+id/etNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#93B9A3"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:padding="5dp"
         android:layout_below="@id/toolbar"
-        android:textAlignment="textEnd"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#81c784"
         android:cursorVisible="false"
-        />
+        android:padding="5dp"
+        android:textAlignment="textEnd"
+        android:textSize="25dp" />
+
+
     <TextView
         android:id="@+id/TVResult"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_height="50dp"
         android:layout_below="@+id/etNumber"
-        android:background="#93B9A3"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#81c784"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
 
     <it.ticandtac.primecalculator.MyKeyboard
         android:id="@+id/keyboard"
@@ -46,11 +50,22 @@
         android:id="@+id/functions_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TVResult"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/chooseFunc"
         android:descendantFocusability="blocksDescendants"
-        android:background="#FFFFFF">
+        android:layout_marginTop="5dp"
+
+        android:background="#cfd8dc">
     </NumberPicker>
+
+    <TextView
+        android:id="@+id/chooseFunc"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TVResult"
+        android:text="SCEGLI LA FUNZIONE:"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
 
 
 </RelativeLayout>

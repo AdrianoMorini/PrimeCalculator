@@ -1,15 +1,18 @@
 package it.ticandtac.primecalculator;
 
 
-import android.app.assist.AssistStructure;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.method.ArrowKeyMovementMethod;
 import android.view.Menu;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etNumber1;
     private int result;
     private boolean op;
+    private static TextView TVres;
 
     public static Context getMainActContx() {
         return mainActContx;
@@ -72,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_menu_);
+        toolbar.setOverflowIcon(drawable);
 
+        TVres = findViewById(R.id.TVResult);
 
         EditText Number = findViewById(R.id.etNumber);
         MyKeyboard keyboard = findViewById(R.id.keyboard);
@@ -91,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
         Number.setMovementMethod(ArrowKeyMovementMethod.getInstance());
         Number.setText(Number.getText(), TextView.BufferType.SPANNABLE);
 
+        Number.setFilters(new InputFilter[]{new InputFilterMinMax("0","9999")});
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/LEDCalculator.ttf");
+
+        TVres.setTypeface(custom_font);
+        Number.setTypeface(custom_font);
 
 
         loadData();
@@ -189,6 +202,10 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public static TextView getTVres() {
+        return TVres;
     }
 }
 
