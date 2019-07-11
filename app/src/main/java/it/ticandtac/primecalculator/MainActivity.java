@@ -170,11 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("Informazioni")
                         .setMessage("Regoli merdaaaaaa")
-                        .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
-                            }
-                        })
+                        .setNeutralButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_info)
                         .show();
             case R.id.Instructions:
