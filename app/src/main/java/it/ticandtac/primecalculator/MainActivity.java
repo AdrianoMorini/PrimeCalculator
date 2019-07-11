@@ -1,21 +1,21 @@
 package it.ticandtac.primecalculator;
 
 
-import android.content.ClipData;
+import android.app.assist.AssistStructure;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.method.ArrowKeyMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
@@ -30,12 +30,16 @@ public class MainActivity extends AppCompatActivity {
     public static final String sndOnOff = "sONOff";
     public static final String SHARED_PREFS = "shared_Prefs";
     private boolean OnOff;
+    private EditText etNumber1;
+    private int result;
+    private boolean op;
 
     public static Context getMainActContx() {
         return mainActContx;
     }
 
     private static Context mainActContx;
+    public static TextView tvResult;
 
 
     @Override
@@ -43,44 +47,75 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final String[] values = {"è primo?","numeri primi minori di n",
+                "fattorizzare n in numeri primi","funzione di eulero","n-esima coppia di numeri gemelli",
+                "n-esimo primo"};
 
         mainActContx = this;
+
+        tvResult = findViewById(R.id.TVResult);
+        etNumber1 = findViewById(R.id.etNumber);
 
         picker = (NumberPicker) findViewById(R.id.functions_);
         picker.setMinValue(0);
         picker.setMaxValue(5);
-        picker.setDisplayedValues(new String[]{"è primo?","numeri primi minori di n",
-                "fattorizzare n in numeri primi","funzione di eulero","n-esima coppia di numeri gemelli",
-                "n-esimo primo"});
+        picker.setDisplayedValues(values);
+        picker.setWrapSelectorWheel(true);
+        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-
+                //tvResult.setText("prova: " + values[newVal]);
+            }
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
 
-        EditText editText = findViewById(R.id.editText);
+        EditText Number = findViewById(R.id.etNumber);
         MyKeyboard keyboard = findViewById(R.id.keyboard);
-        editText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        editText.setTextIsSelectable(true);
+        Number.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        Number.setTextIsSelectable(true);
 
-        InputConnection ic = editText.onCreateInputConnection(new EditorInfo());
+        InputConnection ic = Number.onCreateInputConnection(new EditorInfo());
         keyboard.setInputConnection(ic);
 
 
-        editText.setTextIsSelectable(false);
-        editText.setFocusable(true);
-        editText.setFocusableInTouchMode(false);
-        editText.setClickable(false);
-        editText.setLongClickable(true);
-        editText.setMovementMethod(ArrowKeyMovementMethod.getInstance());
-        editText.setText(editText.getText(), TextView.BufferType.SPANNABLE);
+        Number.setTextIsSelectable(false);
+        Number.setFocusable(true);
+        Number.setFocusableInTouchMode(false);
+        Number.setClickable(false);
+        Number.setLongClickable(true);
+        Number.setMovementMethod(ArrowKeyMovementMethod.getInstance());
+        Number.setText(Number.getText(), TextView.BufferType.SPANNABLE);
 
 
 
         loadData();
         updateViews();
+
+        MyKeyboard.getButtonEnter().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(picker.getValue() == 0){
+                    Editable e = etNumber1.getText();
+                    String s = e.toString();
+                    int result = Integer.parseInt(s);
+                    op = (boolean) MyFuctions.IsPrime(result);
+                    if (!op){
+                        tvResult.setText("Il numero è primo.");
+                    }
+                    else{
+                        tvResult.setText("Il numero non è primo.");
+                    }
+                }
+                else{
+                    tvResult.setText("ciao");
+                }
+            }
+        });
     }
 
     public void saveData(){

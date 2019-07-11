@@ -15,10 +15,26 @@ import android.widget.LinearLayout;
 
 public class MyKeyboard extends LinearLayout implements View.OnClickListener {
 
-    private Button button1, button2, button3, button4,
-            button5, button6, button7, button8,
-            button9, button0, buttonDelete, buttonEnter, buttonAC,
-            buttonEC, buttonOff;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button button7;
+    private Button button8;
+    private Button button9;
+    private Button button0;
+    private Button buttonDelete;
+
+    public static Button getButtonEnter() {
+        return buttonEnter;
+    }
+
+    private static Button buttonEnter;
+    private Button buttonAC;
+    private Button buttonEC;
+    private Button buttonOff;
 
     private SparseArray<String> keyValues = new SparseArray<>();
     private InputConnection inputConnection;

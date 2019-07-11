@@ -12,7 +12,7 @@
         layout="@layout/toolbar" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#93B9A3"
@@ -30,7 +30,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/etNumber"
         android:background="#93B9A3"
         />
 
