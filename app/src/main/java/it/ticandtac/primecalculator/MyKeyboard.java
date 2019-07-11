@@ -55,7 +55,7 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
     @SuppressLint("CutPasteId")
     private void init(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.keyboard, this, true);
-        button1 = (Button) findViewById(R.id.button_7);
+        button1 = (Button) findViewById(R.id.button_1);
         button1.setOnClickListener(this);
         button2 = (Button) findViewById(R.id.button_2);
         button2.setOnClickListener(this);
@@ -87,7 +87,7 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
         buttonOff.setOnClickListener(this);
 
 
-        keyValues.put(R.id.button_7, "1");
+        keyValues.put(R.id.button_1, "1");
         keyValues.put(R.id.button_2, "2");
         keyValues.put(R.id.button_3, "3");
         keyValues.put(R.id.button_4, "4");
@@ -123,16 +123,16 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
         }
 
         if (view.getId() == R.id.button_AC){
-            CharSequence selectedText = inputConnection.getSelectedText(1);
-            inputConnection.deleteSurroundingText(20,20);
+            MainActivity.getTVres().setText("");
             return;
         }
 
         if (view.getId() == R.id.button_EC){
-
+            inputConnection.deleteSurroundingText(20,20);
             return;
         }
         if (view.getId() == R.id.button_enter){
+
             return;
         }
 
