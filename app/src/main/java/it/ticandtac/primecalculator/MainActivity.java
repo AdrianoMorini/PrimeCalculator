@@ -2,15 +2,11 @@ package it.ticandtac.primecalculator;
 
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -24,7 +20,6 @@ import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
     public static final String sndOnOff = "sONOff";
     public static final String SHARED_PREFS = "shared_Prefs";
     private boolean OnOff;
-    private EditText etNumber1;
+
+    public static EditText getEtNumber1() {
+        return etNumber1;
+    }
+
+    private static EditText etNumber1;
     private int result;
     private boolean op;
     private static TextView TVres;
@@ -73,13 +73,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_menu_);
-        toolbar.setOverflowIcon(drawable);
 
         TVres = findViewById(R.id.TVResult);
+
+
 
         EditText Number = findViewById(R.id.etNumber);
         MyKeyboard keyboard = findViewById(R.id.keyboard);
@@ -129,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     public void saveData(){
@@ -160,45 +159,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-
-        switch (item.getItemId()) {
-
-            case R.id.Info:
-                new AlertDialog.Builder(this)
-                        .setTitle("Informazioni")
-                        .setMessage("Regoli merdaaaaaa")
-                        .setNeutralButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .show();
-            case R.id.Instructions:
-                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.soundOnOFF:
-                if (OnOff){
-                    OnOff = false;
-                    saveData();
-                    item.setIcon(R.drawable.ic_volume_off_);
-
-                    Toast.makeText(this, "suono off", Toast.LENGTH_SHORT).show();
-
-                }
-                else {
-                    OnOff = true;
-                    saveData();
-                    item.setIcon(R.drawable.ic_volume_up_);
-                    Toast.makeText(this, "suono on", Toast.LENGTH_SHORT).show();
-                }
-                return true;
-            case R.id.Crono:
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     public static TextView getTVres() {
         return TVres;

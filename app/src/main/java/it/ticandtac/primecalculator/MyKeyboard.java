@@ -36,6 +36,8 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
     private Button buttonEC;
     private Button buttonOff;
 
+    private Button buttonSound;
+
     private SparseArray<String> keyValues = new SparseArray<>();
     private InputConnection inputConnection;
 
@@ -81,10 +83,12 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
         buttonEnter.setOnClickListener(this);
         buttonAC = (Button) findViewById(R.id.button_AC);
         buttonAC.setOnClickListener(this);
-        buttonEC = (Button) findViewById(R.id.button_EC);
-        buttonEC.setOnClickListener(this);
+
         buttonOff = (Button) findViewById(R.id.button_off);
         buttonOff.setOnClickListener(this);
+
+
+
 
 
         keyValues.put(R.id.button_1, "1");
@@ -97,6 +101,8 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
         keyValues.put(R.id.button_8, "8");
         keyValues.put(R.id.button_9, "9");
         keyValues.put(R.id.button_0, "0");
+
+
 
     }
 
@@ -124,17 +130,16 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
 
         if (view.getId() == R.id.button_AC){
             MainActivity.getTVres().setText("");
+            MainActivity.getEtNumber1().setText("");
             return;
         }
 
-        if (view.getId() == R.id.button_EC){
-            inputConnection.deleteSurroundingText(20,20);
-            return;
-        }
+
         if (view.getId() == R.id.button_enter){
 
             return;
         }
+
 
         if (view.getId() == R.id.button_delete) {
             CharSequence selectedText = inputConnection.getSelectedText(0);

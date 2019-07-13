@@ -3,31 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/Info"
-        android:title="Informazioni"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/Instructions"
-        android:title="Manuale d'uso"
-        app:showAsAction="never">
+        android:id="@+id/menu"
+        android:title="Menu"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_keyboard_arrow"/>
 
 
-    </item>
-
-    <item
-
-        android:id="@+id/Crono"
-        android:title="Cronologia"
-        app:showAsAction="never">
-    </item>
-
-    <item
-        android:id="@+id/soundOnOFF"
-        android:icon="@drawable/ic_volume_up_"
-        android:title="Suono"
-        app:showAsAction="ifRoom">
-
-    </item>
 
 </menu>

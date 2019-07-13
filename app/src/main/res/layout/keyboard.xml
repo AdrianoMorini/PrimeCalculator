@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -9,129 +9,162 @@
 
         <Button
             android:id="@+id/button_7"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="7" />
+            android:layout_above="@id/button_4"
+            android:text="7"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_8"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8"/>
+            android:layout_toEndOf="@id/button_7"
+            android:layout_above="@id/button_5"
+            android:text="8"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_9"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="9"/>
+            android:layout_toEndOf="@id/button_8"
+            android:layout_above="@id/button_6"
+            android:text="9"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_delete"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="DEL"/>
+            android:layout_toEndOf="@id/button_9"
+            android:layout_above="@id/button_AC"
+            android:text="DEL"
+            android:background="#FEF700"
+            android:textColor="@color/darkG"
+            android:layout_margin="1dp"/>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button_4"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="4"/>
+            android:layout_above="@id/button_1"
+            android:text="4"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_5"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="5"/>
+            android:layout_above="@id/button_2"
+            android:layout_toEndOf="@id/button_4"
+            android:text="5"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_6"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6"/>
+            android:layout_above="@id/button_3"
+            android:layout_toEndOf="@id/button_5"
+            android:text="6"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_AC"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="AC"/>
+            android:layout_toEndOf="@id/button_6"
+            android:layout_above="@id/button_off"
+            android:text="AC"
+            android:background="#FEF700"
+            android:textColor="@color/darkG"
+            android:layout_margin="1dp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button_1"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1"/>
+            android:layout_above="@id/button_0"
+            android:text="1"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_2"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2"/>
+            android:layout_toEndOf="@id/button_1"
+            android:layout_above="@id/button_enter"
+            android:text="2"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
             android:id="@+id/button_3"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="3"/>
+            android:layout_toEndOf="@id/button_2"
+            android:layout_above="@id/button_enter"
+            android:text="3"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"/>
 
         <Button
-            android:id="@+id/button_EC"
-            android:layout_width="0dp"
+            android:id="@+id/button_off"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="EC"/>
-    </LinearLayout>
+            android:text="OFF"
+            android:layout_above="@id/button_enter"
+            android:layout_toEndOf="@id/button_3"
+            android:background="#FEF700"
+            android:textColor="@color/darkG"
+            android:layout_margin="1dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/button_0"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="0"/>
+            android:layout_alignParentBottom="true"
+            android:text="0"
+            android:background="#363636"
+            android:textColor="@color/yellow"
+            android:layout_margin="1dp"
+            />
+
 
         <Button
             android:id="@+id/button_enter"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Enter"/>
-        <Button
-            android:id="@+id/button_off"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="OFF"/>
+            android:text="Enter"
+            android:layout_toEndOf="@id/button_0"
+            android:background="#FEF700"
+            android:textColor="@color/darkG"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="1dp"
+            />
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
 </merge>
