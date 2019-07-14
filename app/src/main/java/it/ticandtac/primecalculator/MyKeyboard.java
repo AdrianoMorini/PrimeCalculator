@@ -108,6 +108,10 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (MainActivity.isOnOff()){
+            MainActivity.getBeepSound().start();
+        }
+
         if (inputConnection == null) {
             return;
         }
@@ -136,7 +140,6 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
 
 
         if (view.getId() == R.id.button_enter){
-
             return;
         }
 

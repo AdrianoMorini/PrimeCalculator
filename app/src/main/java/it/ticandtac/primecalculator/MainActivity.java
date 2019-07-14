@@ -2,32 +2,45 @@ package it.ticandtac.primecalculator;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.method.ArrowKeyMovementMethod;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    private Switch switch_;
     NumberPicker picker = null;
-    public static final String sndOnOff = "sONOff";
-    public static final String SHARED_PREFS = "shared_Prefs";
-    private boolean OnOff;
+
+    public  static MediaPlayer getBeepSound() {
+        return beepSound;
+    }
+
+    private  static MediaPlayer beepSound;
+
+
+    public static boolean isOnOff() {
+        return OnOff;
+    }
+
+
+
+    private static boolean OnOff;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String SWITCH = "switch_";
 
     public static EditText getEtNumber1() {
         return etNumber1;
@@ -57,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         mainActContx = this;
 
+        beepSound = MediaPlayer.create(this, R.raw.beep_);
+
         tvResult = findViewById(R.id.TVResult);
         etNumber1 = findViewById(R.id.etNumber);
 
@@ -74,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        switch_ = (Switch) findViewById(R.id.sound);
         TVres = findViewById(R.id.TVResult);
 
 
@@ -128,37 +144,37 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+        loadData();
+        updateViews();
+
+        switch_.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnOff = switch_.isChecked();
+                saveData();
+            }
+        });
     }
 
     public void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putBoolean(sndOnOff, OnOff);
+        editor.putBoolean(SWITCH, switch_.isChecked());
         editor.apply();
-     }
 
+    }
 
     public void loadData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        OnOff = sharedPreferences.getBoolean(sndOnOff, true);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        OnOff = sharedPreferences.getBoolean(SWITCH, true);
 
     }
 
     public void updateViews(){
-
-
-
+        switch_.setChecked(OnOff);
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_, menu);
-        return true;
-    }
-
 
 
     public static TextView getTVres() {
