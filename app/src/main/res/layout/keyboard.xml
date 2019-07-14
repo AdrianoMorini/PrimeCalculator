@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/button_4"
             android:text="7"
-            android:background="#363636"
+            android:background="@drawable/buttonshape"
             android:textColor="@color/yellow"
            />
 

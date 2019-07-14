@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -152,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OnOff = switch_.isChecked();
+                if (OnOff){
+                    Toast.makeText(MainActivity.this, "Suono On", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Suono Off", Toast.LENGTH_SHORT).show();
+                }
                 saveData();
             }
         });
