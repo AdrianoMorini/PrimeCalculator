@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
@@ -114,8 +115,21 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
+        if (Fragment_calc.getTVres().getText().length() != 0){
+            Fragment_calc.getTVres().setText("");
+            Fragment_calc.getNumber().setText("");
+
+        }
+
+        if (Fragment_calc.getNumber().length() == 6){
+            Toast.makeText(Fragment_calc.getCalcContxt(), "Max caracter", Toast.LENGTH_SHORT).show();
+
+        }
+
         if (Fragment_calc.isOnOff()){
             Fragment_calc.getBeepSound().start();
+
         }
 
         if (inputConnection == null) {

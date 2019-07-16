@@ -1,5 +1,6 @@
 package it.ticandtac.primecalculator;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -60,6 +61,12 @@ public class Fragment_calc extends Fragment {
     private static boolean op;
     private  Button info;
 
+    public static Context getCalcContxt() {
+        return calcContxt;
+    }
+
+    private static Context calcContxt;
+
 
     final String[] values = {"è primo?","numeri primi minori di n",
             "fattorizzare n in numeri primi","funzione di eulero","n-esima coppia di numeri gemelli",
@@ -70,6 +77,8 @@ public class Fragment_calc extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calc, container, false);
+
+        calcContxt = view.getContext();
 
         this.picker = view.findViewById(R.id.functions_);
         this.Number = view.findViewById(R.id.etNumber);
