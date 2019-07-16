@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class MyKeyboard extends LinearLayout implements View.OnClickListener {
+public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     private Button button1;
     private Button button2;
@@ -35,6 +35,12 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
     private Button buttonAC;
     private Button buttonEC;
     private Button buttonOff;
+
+    public static InputConnection getIc() {
+        return ic;
+    }
+
+    private static InputConnection ic;
 
     private Button buttonSound;
 
@@ -108,8 +114,8 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        if (MainActivity.isOnOff()){
-            MainActivity.getBeepSound().start();
+        if (Fragment_calc.isOnOff()){
+            Fragment_calc.getBeepSound().start();
         }
 
         if (inputConnection == null) {
@@ -133,8 +139,8 @@ public class MyKeyboard extends LinearLayout implements View.OnClickListener {
         }
 
         if (view.getId() == R.id.button_AC){
-            MainActivity.getTVres().setText("");
-            MainActivity.getEtNumber1().setText("");
+            Fragment_calc.getTVres().setText("");
+            Fragment_calc.getNumber().setText("");
             return;
         }
 
