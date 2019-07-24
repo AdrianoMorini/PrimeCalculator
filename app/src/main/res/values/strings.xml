@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Prime Calculator</string>
-    <string name="Open">Prime Calculator</string>
-    <string name="Close">Prime Calculator</string>
+
+
+    <string name="isPrime">è primo?</string>
+    <string name="numberPrimeLessN">numeri primi minori di n</string>
+    <string name="FactPrimeN">fattorizzare n in numeri primi</string>
+    <string name="Eulero">funzione di eulero</string>
+    <string name="NTwins">n-esima coppia di numeri gemelli</string>
+    <string name="NPrime">n-esimo primo</string>
+
+
+    <string name="isPrimeDes">ciao mancio</string>
+
 
 </resources>
+

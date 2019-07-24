@@ -15,4 +15,5 @@
         android:id="@+id/nav_manual"
         android:icon="@drawable/manual"
         android:title="Manuale d'uso"/>
+
 </menu>

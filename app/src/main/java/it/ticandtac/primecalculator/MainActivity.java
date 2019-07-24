@@ -1,6 +1,5 @@
 package it.ticandtac.primecalculator;
 
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,26 +7,27 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Context getMainActContx() {
-        return mainActContx;
+
+    public static Context getMainCntxt() {
+        return MainCntxt;
     }
 
-    private static Context mainActContx;
-
+    private static Context MainCntxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainActContx = this;
 
-        Button crono = findViewById(R.id.nav_cronology);
-        Button man = findViewById(R.id.nav_manual);
+        MainCntxt = this;
+
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Fragment_calc()).commit();
         }
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -64,6 +62,4 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
 }
-

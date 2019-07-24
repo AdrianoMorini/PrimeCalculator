@@ -7,6 +7,13 @@ import java.util.Set;
 
 public class MyFuctions extends AppCompatActivity {
 
+    /**
+     * TUTTE LE FUNZIONI DEVONO PRENDERE IN INPUT UN LONG E IN OUTPUT
+     * QUELLO CHE CAZZO TI PARE
+     * @param n
+     * @return
+     */
+
 
     public static boolean IsPrime(long n){
         if(n < 2) return false;

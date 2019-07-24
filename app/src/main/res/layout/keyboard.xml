@@ -162,13 +162,24 @@
             android:layout_margin="1dp"
             />
 
+        <Button
+            android:id="@+id/button_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Funzione"
+            android:layout_toEndOf="@id/button_0"
+            android:background="@drawable/buttonshape_r"
+            android:textColor="@color/darkG"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="1dp"
+            />
 
         <Button
             android:id="@+id/button_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enter"
-            android:layout_toEndOf="@id/button_0"
+            android:layout_toEndOf="@id/button_func"
             android:background="@drawable/buttonshape_y"
             android:textColor="@color/darkG"
             android:layout_alignParentBottom="true"
