@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import static android.content.Context.MODE_PRIVATE;
@@ -212,14 +214,30 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
 
     private void showNumberPrimeLessN(Object result) {
         int risultato = (int) result;
+        TVres.setText(String.valueOf(risultato));
     }
 
     private void showEul(Object result) {
-        /*quello che deve tornare risultato = (quello che deve tornare) result;*/
+        int risultato = (int) result;
+        TVres.setText(String.valueOf(risultato));
     }
 
     private void showFact(Object result) {
-      /*quello che deve tornare risultato = (quello che deve tornare) result;*/
+      List<String> risultato = (List<String>) result;
+      int size = risultato.size();
+      for(int i=0; i < size; i++){
+          TVres.append(risultato.get(i));
+      }
+
+      //TODO: risolvere il problema relativo alla riattivazione del bottone enter una volta settato
+        //    al valore false. Bisogna trovare un modo per disattivarlo SOLO all' interno di questa
+        //    funzione.
+
+      MyKeyboard.getButtonEnter().setClickable(false);
+        //    il bottone enter deve essere disattivato dopo il primo click. Se viene premuto
+        //    di nuovo, vengono aggiunti altri elementi inutili alla textview. Commentare linea 236
+        //    e re-buildare per vedere il problema.
+
     }
 
     private void showTwins(Object result) {
