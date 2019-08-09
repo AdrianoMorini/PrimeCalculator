@@ -6,6 +6,7 @@ import android.util.SparseIntArray;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 public class MyFuctions extends AppCompatActivity {
@@ -119,8 +120,43 @@ public class MyFuctions extends AppCompatActivity {
         return;
     }
 
-    public static void NPrime(long n){
-        //TODO
-        return;
+    // problema: dovrei prendere in input sia n che k, perchè è richiesto di calcolare il numero
+    // primo in posizione k.
+    // EDIT: e invece no! lo prendo in input dentro la funzione. Dio porco.
+    // Funziona, ma il problema è che premendo Enter la funzione ricomincia da capo. Non va bene.
+    // Possibili soluzioni: provare a passare il valore k ad NPrime oppure usare lo scanner
+    // (più semplice) ma cambiare la funzione del tasto Enter.
+
+    public static int NPrime(long n){
+
+        SparseIntArray primeNumbers = new SparseIntArray();
+        Scanner scanner = new Scanner(System.in);
+
+        for (int i = 1; i <= n; i++)
+        {
+            int counter=0;
+            for(int num =i; num>=1; num--)
+            {
+                if(i%num==0)
+                {
+                    counter = counter + 1;
+                }
+            }
+            if (counter ==2)
+            {
+                //Appended the Prime number to the String
+                primeNumbers.append(i,i);
+            }
+        }
+
+        Fragment_calc.getTVres().setText("Inserisci il valore di k:");  //sborro.
+        //grazie a dio esiste una sorta di scanf.
+        int k = scanner.nextInt();
+
+        int key = primeNumbers.valueAt(k);
+
+        scanner.close();
+
+        return key;
     }
 }

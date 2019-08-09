@@ -245,7 +245,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     }
 
     private void showNPrime(Object result) {
-        /*quello che deve tornare risultato = (quello che deve tornare) result;*/
+        int risultato = (int) result;
+        TVres.setText("Il k-esimo primo è: " + String.valueOf(risultato));
     }
 
 
