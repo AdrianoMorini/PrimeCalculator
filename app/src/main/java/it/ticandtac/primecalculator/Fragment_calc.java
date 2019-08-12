@@ -223,20 +223,12 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     }
 
     private void showFact(Object result) {
+      TVres.setText("");                               //grazie Adri <3.
       List<String> risultato = (List<String>) result;
       int size = risultato.size();
       for(int i=0; i < size; i++){
           TVres.append(risultato.get(i));
       }
-
-      //TODO: risolvere il problema relativo alla riattivazione del bottone enter una volta settato
-        //    al valore false. Bisogna trovare un modo per disattivarlo SOLO all' interno di questa
-        //    funzione.
-
-      MyKeyboard.getButtonEnter().setClickable(false);
-        //    il bottone enter deve essere disattivato dopo il primo click. Se viene premuto
-        //    di nuovo, vengono aggiunti altri elementi inutili alla textview. Commentare linea 236
-        //    e re-buildare per vedere il problema.
 
     }
 
@@ -246,7 +238,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
 
     private void showNPrime(Object result) {
         int risultato = (int) result;
-        TVres.setText("Il k-esimo primo è: " + String.valueOf(risultato));
+        TVres.setText(String.valueOf(risultato));
     }
 
 

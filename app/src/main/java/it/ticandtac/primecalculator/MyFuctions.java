@@ -1,5 +1,6 @@
 package it.ticandtac.primecalculator;
 
+import android.media.tv.TvRecordingClient;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseIntArray;
 
@@ -120,42 +121,85 @@ public class MyFuctions extends AppCompatActivity {
         return;
     }
 
-    // problema: dovrei prendere in input sia n che k, perchè è richiesto di calcolare il numero
-    // primo in posizione k.
-    // EDIT: e invece no! lo prendo in input dentro la funzione. Dio porco.
-    // Funziona, ma il problema è che premendo Enter la funzione ricomincia da capo. Non va bene.
-    // Possibili soluzioni: provare a passare il valore k ad NPrime oppure usare lo scanner
-    // (più semplice) ma cambiare la funzione del tasto Enter.
+    //Risolto. La prima versione per adesso la teniamo, non si sa mai.
 
-    public static int NPrime(long n){
+    /* public static int NPrime(long n){
 
         SparseIntArray primeNumbers = new SparseIntArray();
-        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= n; i++)
-        {
-            int counter=0;
-            for(int num =i; num>=1; num--)
+        int m = (int) (n*Math.sqrt(n));
+
+        if (n == 0){
+            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+        }
+
+        if ( n == 1 || n == 2){
+            return (int)n+1;
+        }
+
+        else {
+            for (int i = 1; i <= m; i++)
             {
-                if(i%num==0)
+                int counter=0;
+                for(int num =i; num>=1; num--)
                 {
-                    counter = counter + 1;
+                    if(i%num==0)
+                    {
+                        counter = counter + 1;
+                    }
                 }
-            }
-            if (counter ==2)
-            {
-                //Appended the Prime number to the String
-                primeNumbers.append(i,i);
+                if (counter ==2)
+                {
+                    //Appended the Prime number to the String
+                    primeNumbers.append(i,i);
+                }
             }
         }
 
-        Fragment_calc.getTVres().setText("Inserisci il valore di k:");  //sborro.
-        //grazie a dio esiste una sorta di scanf.
-        int k = scanner.nextInt();
 
-        int key = primeNumbers.valueAt(k);
+        int key = primeNumbers.valueAt((int) n - 1);
 
-        scanner.close();
+        return key;
+    } */
+
+    public static int NPrime_v2(long n){
+
+        SparseIntArray primeNumbers = new SparseIntArray();
+        int m = (int) (n*Math.sqrt(n));
+
+        if (n == 0){
+            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+        }
+
+        if ( n == 1 || n == 2){
+            return (int)n+1;
+        }
+
+        if (n==3) return (int)n+2;
+        if (n==5) return (int)n*2+1;
+
+        boolean prime[] = new boolean[m+1];
+        for(int i=0;i<m;i++)
+            prime[i] = true;
+
+        for(int p = 2; p*p <=m; p++)
+        {
+            // If prime[p] is not changed, then it is a prime
+            if(prime[p] == true)
+            {
+                // Update all multiples of p
+                for(int i = p*p; i <= m; i += p)
+                    prime[i] = false;
+            }
+        }
+
+        for(int i = 2; i <= m; i++)
+        {
+            if(prime[i] == true)
+                primeNumbers.append(i,i);
+        }
+
+        int key = primeNumbers.valueAt((int) n -1);
 
         return key;
     }

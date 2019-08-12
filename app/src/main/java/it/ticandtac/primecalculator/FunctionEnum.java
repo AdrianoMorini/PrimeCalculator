@@ -7,7 +7,7 @@ public enum FunctionEnum {
     FACTPRIMEN(R.string.FactPrimeN, 0, "FactPrimeN", "showFact"),
     EULERO(R.string.Eulero, 0,"Euler0","showEul"),
     NTWINS(R.string.NTwins, 0, "NTwins", "showNTwins"),
-    NPRIME(R.string.NPrime, 0, "NPrime", "showNPrime");
+    NPRIME(R.string.NPrime, 0, "NPrime_v2", "showNPrime");
 
     private int titleRes;
     private int desRes;
