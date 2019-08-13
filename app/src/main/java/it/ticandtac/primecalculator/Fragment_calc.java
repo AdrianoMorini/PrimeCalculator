@@ -232,8 +232,9 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
 
     }
 
-    private void showTwins(Object result) {
-        /*quello che deve tornare risultato = (quello che deve tornare) result;*/
+    private void showNTwins(Object result) {
+        int risultato = (int) result;
+        TVres.setText("Twins are:" + String.valueOf(risultato-2) + ","+ String.valueOf(risultato));
     }
 
     private void showNPrime(Object result) {
