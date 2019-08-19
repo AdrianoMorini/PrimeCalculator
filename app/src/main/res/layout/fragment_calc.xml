@@ -18,7 +18,7 @@
         android:id="@+id/sound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/etNumber"
+        android:layout_above="@id/view2"
         android:layout_marginEnd="15dp"
         android:layout_toLeftOf="@id/info"
         android:layout_marginTop="10dp"
@@ -31,13 +31,12 @@
         android:id="@+id/etNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/info"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginRight="6dp"
-        android:background= "#4D4D4D"
+        android:layout_below="@id/view2"
+        android:layout_toEndOf="@+id/view1"
+        android:background= "#8FB199"
         android:cursorVisible="false"
-        android:padding="5dp"
+        android:layout_toStartOf="@id/view4"
+
         android:textColor="@color/yellow"
         android:textAlignment="textEnd"
         android:textSize="25dp"
@@ -48,20 +47,66 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/etNumber"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:background="#4D4D4D"
+        android:background="#8FB199"
+        android:layout_toEndOf="@+id/view1"
         android:textAlignment="textEnd"
         android:textColor="@color/yellow"
+        android:layout_toStartOf="@id/view4"
         android:textSize="25dp"
         />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/grad_screen_dark2"
+        android:layout_below="@id/info"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="2dp"
+
+        />
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/grad_screen_w1"
+        android:layout_below="@id/TVResult"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="9dp"
+
+
+        />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="3dp"
+        android:layout_height="103dp"
+        android:background="@drawable/grad_screen_w2"
+        android:layout_below="@+id/view2"
+        android:layout_above="@id/view3"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="7dp"
+        />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="3dp"
+        android:layout_height="101dp"
+        android:background="@drawable/grad_screen_dark1"
+        android:layout_below="@+id/view2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="7dp"/>
 
     <it.ticandtac.primecalculator.MyKeyboard
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="3dp"
         android:orientation="vertical"
+        android:layout_below="@id/functions_"
         />
 
     <NumberPicker
