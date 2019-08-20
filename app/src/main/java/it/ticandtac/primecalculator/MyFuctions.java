@@ -10,13 +10,6 @@ import java.util.List;
 
 public class MyFuctions extends AppCompatActivity {
 
-    /**
-     * TUTTE LE FUNZIONI DEVONO PRENDERE IN INPUT UN LONG E IN OUTPUT
-     * QUELLO CHE CAZZO TI PARE
-     * @param n
-     * @return
-     */
-
 
     public static boolean IsPrime(long n){
         if(n < 2) return false;
@@ -27,6 +20,40 @@ public class MyFuctions extends AppCompatActivity {
             if(n%(i-1) == 0 || n%(i+1) == 0) return false;
         }
         return true;
+    }
+
+    public static int PrimeNumbersCount(long n){
+        SparseIntArray primeNumbers = new SparseIntArray();
+
+        if (n == 0){
+            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+        }
+
+
+        boolean prime[] = new boolean[(int) (n+1)];
+        for(int i=0;i<n;i++)
+            prime[i] = true;
+
+        for(int p = 2; p*p <=n; p++)
+        {
+            // If prime[p] is not changed, then it is a prime
+            if(prime[p] == true)
+            {
+                // Update all multiples of p
+                for(int i = p*p; i <= n; i += p)
+                    prime[i] = false;
+            }
+        }
+
+        for(int i = 2; i <= n; i++)
+        {
+            if(prime[i] == true)
+                primeNumbers.append(i,i);
+        }
+
+        int key = primeNumbers.size();
+
+        return key;
     }
 
     public static List<String> FactPrimeN(long n){
@@ -82,14 +109,31 @@ public class MyFuctions extends AppCompatActivity {
                 result *= (1.0 - (1.0 / (float)n));
 
             return (int)result;
+    }
+
+    public static int NPrime(long n){
+
+        int num = 0;
+        int index = 0;
+
+        if (n == 0){
+            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
         }
+
+        while(index != n){
+            num++;
+            if(IsPrime(num)){
+                index++;
+            }
+        }
+
+        return num;
+    }
 
     public static int NTwins(long n){
 
-        SparseIntArray primeNumbers = new SparseIntArray();
-        SparseIntArray primeTwins = new SparseIntArray();
-
-        int m = (int) (2*n*n);
+        int index = 0;
+        int num = 0;
 
         if (n == 0){
             Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
@@ -97,112 +141,13 @@ public class MyFuctions extends AppCompatActivity {
 
         if (n==1) return (int)n+4;
 
-        boolean prime[] = new boolean[m+1];
-        for(int i=0;i<m;i++)
-            prime[i] = true;
-
-        for(int p = 2; p*p <=m; p++)
-        {
-            // If prime[p] is not changed, then it is a prime
-            if(prime[p] == true)
-            {
-                // Update all multiples of p
-                for(int i = p*p; i <= m; i += p)
-                    prime[i] = false;
+        while(index != n){
+            num++;
+            if(IsPrime(num) && IsPrime(num - 2)){
+                index++;
             }
         }
 
-        for(int i = 2; i <= m; i++)
-        {
-            if(prime[i] == true)
-                primeNumbers.append(i,i);
-        }
-
-        for(int i = 2; i < primeNumbers.size(); i++)
-        {
-            if((primeNumbers.valueAt(i) - primeNumbers.valueAt(i-1)) == 2)
-                primeTwins.append(primeNumbers.valueAt(i),primeNumbers.valueAt(i));
-        }
-
-        int key = primeTwins.valueAt((int) n - 1);
-
-        return key;
-    }
-
-
-    public static int NPrime(long n){
-
-        SparseIntArray primeNumbers = new SparseIntArray();
-        int m = (int) (n*Math.sqrt(n));
-
-        if (n == 0){
-            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
-        }
-
-        if ( n == 1 || n == 2){
-            return (int)n+1;
-        }
-
-        if (n==3) return (int)n+2;
-        if (n==5) return (int)n*2+1;
-
-        boolean prime[] = new boolean[m+1];
-        for(int i=0;i<m;i++)
-            prime[i] = true;
-
-        for(int p = 2; p*p <=m; p++)
-        {
-            // If prime[p] is not changed, then it is a prime
-            if(prime[p] == true)
-            {
-                // Update all multiples of p
-                for(int i = p*p; i <= m; i += p)
-                    prime[i] = false;
-            }
-        }
-
-        for(int i = 2; i <= m; i++)
-        {
-            if(prime[i] == true)
-                primeNumbers.append(i,i);
-        }
-
-        int key = primeNumbers.valueAt((int) n - 1);
-
-        return key;
-    }
-
-    public static int PrimeNumbersCount(long n){
-        SparseIntArray primeNumbers = new SparseIntArray();
-
-        if (n == 0){
-            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
-        }
-
-
-        boolean prime[] = new boolean[(int) (n+1)];
-        for(int i=0;i<n;i++)
-            prime[i] = true;
-
-        for(int p = 2; p*p <=n; p++)
-        {
-            // If prime[p] is not changed, then it is a prime
-            if(prime[p] == true)
-            {
-                // Update all multiples of p
-                for(int i = p*p; i <= n; i += p)
-                    prime[i] = false;
-            }
-        }
-
-        for(int i = 2; i <= n; i++)
-        {
-            if(prime[i] == true)
-                primeNumbers.append(i,i);
-        }
-
-        int key = primeNumbers.size();
-
-        return key;
+        return num;
     }
 }
