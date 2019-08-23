@@ -1,5 +1,6 @@
 package it.ticandtac.primecalculator;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 public class CronoAdapter extends RecyclerView.Adapter<CronoAdapter.CronoViewHolder> {
     private Cursor cursor;
+    private Context context;
 
     public static class CronoViewHolder extends RecyclerView.ViewHolder{
 
@@ -33,8 +35,9 @@ public class CronoAdapter extends RecyclerView.Adapter<CronoAdapter.CronoViewHol
         }
     }
 
-    public CronoAdapter(Cursor cursor){
+    public CronoAdapter(Cursor cursor, Context context){
         this.cursor = cursor;
+        this.context = context;
     }
 
     @NonNull
@@ -47,8 +50,9 @@ public class CronoAdapter extends RecyclerView.Adapter<CronoAdapter.CronoViewHol
     @Override
     public void onBindViewHolder(@NonNull CronoViewHolder cronoViewHolder, int i) {
         this.cursor.moveToPosition(i);
-        cronoViewHolder.getFunct_().setText(cursor.getString(1));
-        cronoViewHolder.getResul_().setText(cursor.getString(2));
+        cronoViewHolder.getFunct_().setText("N = " + cursor.getString(1));
+        cronoViewHolder.getResul_().setText(this.context.getString(FunctionEnum.valueOf(cursor.getString(3)).getFunctionID()) + cursor.getString(2));
+
 
     }
 

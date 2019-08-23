@@ -55,7 +55,7 @@ public class Fragment_crono extends Fragment {
 
         resVDB.setLayoutManager(layoutManager);
         resVDB.setItemAnimator(new DefaultItemAnimator());
-        mAdapter = new CronoAdapter(myDb.getAllData());
+        mAdapter = new CronoAdapter(myDb.getAllData(), getCronoCntxt());
         resVDB.setAdapter(mAdapter);
 
 

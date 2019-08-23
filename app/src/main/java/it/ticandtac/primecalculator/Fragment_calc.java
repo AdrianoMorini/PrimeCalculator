@@ -36,7 +36,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Fragment_calc extends Fragment implements View.OnClickListener {
 
-    private NumberPicker picker;
+    private static NumberPicker picker;
 
     public static TextView getTVres() {
         return TVres;
@@ -230,20 +230,11 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
           TVres.append(risultato.get(i));
       }
 
-      //TODO: risolvere il problema relativo alla riattivazione del bottone enter una volta settato
-        //    al valore false. Bisogna trovare un modo per disattivarlo SOLO all' interno di questa
-        //    funzione.
-
-      MyKeyboard.getButtonEnter().setClickable(false);
-        //    il bottone enter deve essere disattivato dopo il primo click. Se viene premuto
-        //    di nuovo, vengono aggiunti altri elementi inutili alla textview. Commentare linea 236
-        //    e re-buildare per vedere il problema.
-
     }
 
     private void showNTwins(Object result) {
         int risultato = (int) result;
-        TVres.setText("Twins are:" + String.valueOf(risultato-2) + ","+ String.valueOf(risultato));
+        TVres.setText(String.valueOf(risultato-2) + ","+ String.valueOf(risultato));
     }
 
     private void showNPrime(Object result) {
@@ -337,7 +328,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         }
 
         boolean isInserted = myDb.insertData(Number.getText().toString(),
-                TVres.getText().toString());
+                TVres.getText().toString(), functionEnum.toString());
         if (isInserted = true){
             Toast.makeText(MainActivity.getMainCntxt(), "Inserted", Toast.LENGTH_SHORT).show();
 

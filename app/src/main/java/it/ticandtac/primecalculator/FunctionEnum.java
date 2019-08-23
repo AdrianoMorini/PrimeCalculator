@@ -2,22 +2,26 @@ package it.ticandtac.primecalculator;
 
 public enum FunctionEnum {
 
-    ISPRIME(R.string.isPrime, R.string.isPrimeDes, "IsPrime", "showPrime"),
-    PRIMENUMBERSCOUNT(R.string.numberPrimeLessN, 0,"PrimeNumbersCount","showNumberPrimeLessN"),
-    FACTPRIMEN(R.string.FactPrimeN, 0, "FactPrimeN", "showFact"),
-    EULERO(R.string.Eulero, 0,"Euler0","showEul"),
-    NTWINS(R.string.NTwins, 0, "NTwins", "showNTwins"),
-    NPRIME(R.string.NPrime, 0, "NPrime", "showNPrime");
+    ISPRIME(R.string.isPrime, R.string.isPrimeDes, "IsPrime", "showPrime",0),
+    PRIMENUMBERSCOUNT(R.string.numberPrimeLessN, R.string.primeNumCountDes,"PrimeNumbersCount","showNumberPrimeLessN",R.string.primeNumCountID),
+    FACTPRIMEN(R.string.FactPrimeN, R.string.factPrimeDes, "FactPrimeN", "showFact",R.string.showFactID),
+    EULERO(R.string.Eulero, R.string.euleroDes,"Euler0","showEul",R.string.euleroID),
+    NTWINS(R.string.NTwins, R.string.nTwinsDes, "NTwins", "showNTwins",R.string.nTwinsID),
+    NPRIME(R.string.NPrime, R.string.nPrimeDes, "NPrime", "showNPrime",R.string.nPrimeID);
 
     private int titleRes;
     private int desRes;
     private String functionName;
     private String handleResultFun;
-    private FunctionEnum(int titleRes, int desRes, String functionName, String handleResultFun){
+    private int functionID;
+
+
+    private FunctionEnum(int titleRes, int desRes, String functionName, String handleResultFun, int functionID){
         this.titleRes = titleRes;
         this.desRes = desRes;
         this.functionName = functionName;
         this.handleResultFun = handleResultFun;
+        this.functionID = functionID;
     }
 
     public int getTitleRes(){
@@ -35,4 +39,9 @@ public enum FunctionEnum {
     public String getHandleResultFun() {
         return handleResultFun;
     }
+    public int getFunctionID() {
+        return functionID;
+    }
+
+
 }

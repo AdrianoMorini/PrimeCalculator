@@ -15,6 +15,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COL1 = "ID";
     public static final String COL2 = "FUNCTION";
     public static final String COL3 = "RESULT";
+    public static final String COL4 = "FUNCTION_NAME";
 
 
 
@@ -25,7 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, FUNCTION TEXT, RESULT TEXT)");
+        db.execSQL("create table "+ TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT, FUNCTION TEXT, RESULT TEXT, FUNCTION_NAME TEXT)");
 
     }
 
@@ -36,11 +37,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String function, String rslt) {
+    public boolean insertData(String function, String rslt, String functionName) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, function);
         contentValues.put(COL3, rslt);
+        contentValues.put(COL4,functionName);
         try {
             db.insert(TABLE_NAME, null, contentValues);
         } catch (Exception e) {
