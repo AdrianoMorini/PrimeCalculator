@@ -1,37 +1,46 @@
 <resources>
     <string name="app_name">Prime Calculator</string>
+    
+    
+    
+    
 
 
-    <string name="isPrime">È PRIMO?</string>
-    <string name="numberPrimeLessN">NUMERI PRIMI MINORI DI N</string>
-    <string name="FactPrimeN">FATTORIZZAZIONE DI N IN NUMERI PRIMI</string>
-    <string name="Eulero">FUNZIONE DI EULERO</string>
-    <string name="NTwins">N-ESIMA COPPIA DI NUMERI PRIMI GEMELLI</string>
-    <string name="NPrime">N-ESIMO PRIMO</string>
+    <string name="isPrime">IS PRIME?</string>
+    <string name="numberPrimeLessN">PRIME NUMBERS SMALLER THAN N</string>
+    <string name="FactPrimeN">PRIME FACTORIZATION OF N</string>
+    <string name="Eulero">EULERO FUNCTION</string>
+    <string name="NTwins">N-TH PAIR OF PRIME-TWINS-NUMBERS</string>
+    <string name="NPrime">N-TH PRIME</string>
 
 
-    <string name="isPrimeDes">Verifica se il numero scelto è primo. In matematica, un numero primo (in breve anche primo)
-        è un numero intero positivo che abbia esattamente due divisori distinti. In modo equivalente si può definire come
-        un numero naturale maggiore di 1 che sia divisibile solamente per 1 e per sé stesso</string>
-    <string name="primeNumCountDes">Conta quanti sono i numeri primi minori del numero scelto</string>
-    <string name="factPrimeDes">Esegue la fattorizzazione in numeri primi del numero scelto. La
-        scomposizione in fattori primi, o fattorizzazione in numeri primi, è un procedimento algebrico
-        che permette di riscrivere un numero naturale come prodotto di numeri primi. Se il
-        numero scelto è primo, la sua fattorizzazione coinciderà proprio con esso</string>
-    <string name="euleroDes">Esegue la funzione di eulero del numero scelto. In matematica, la funzione φ
-        di Eulero o semplicemente funzione di Eulero o toziente, è una funzione definita, per ogni intero positivo n,
-        come il numero degli interi compresi tra 1 e n che sono coprimi con n. Ad esempio, φ(8)=4 poiché i numeri coprimi
-        di 8 sono quattro: 1, 3, 5, 7. Deve il suo nome al matematico svizzero Eulero, che per primo la descrisse.</string>
-    <string name="nTwinsDes">Calcola la n-esima coppia di numeri primi gemelli, dove n è il numero dato. In matematica, si
-        definiscono numeri primi gemelli due numeri primi che differiscono tra loro di due. Fatta eccezione per la coppia (2, 3),
-        questa è la più piccola differenza possibile fra due primi. Alcuni esempi di coppie di primi gemelli sono 5 e 7, 11 e 13,
-        e 821 e 823.</string>
-    <string name="nPrimeDes">Calcola il numero primo in posizione n, dove n è il numero dato</string>
+    <string name="isPrimeDes">Verify if the choosen number is prime. In maths a number is prime, when the only factors are 1 and itself</string>
+    <string name="primeNumCountDes">Count how much prime numbers, are less then the choosen number</string>
+    <string name="factPrimeDes">Do the prime factorization of the choosen number. This factoring is an algebrical procedure, that allow to write a number as its numbers prime product. If the choosen number is prime the factoring coincide with itself</string>
+    <string name="euleroDes">Do the Euler function of the choosen number. In maths, the Euler function φ calculate how much numbers, that are coprime with n, there are between 1 and the choosen number n. For example, φ(8)=4 because the coprime numbers with 8 are 4: 1, 3, 5, 7</string>
+    <string name="nTwinsDes">Calculate the n-th pair of prime twins numbers, where n is the choosen number. In maths two prime numbers are twins if the subtraction between of them is equal to 2. The exeption is the couple (2,3). An example is (5,7) or (11,13) or (821,823)</string>
+    <string name="nPrimeDes">Calculate the prime number in n-th position, and n is the choosen number</string>
 
-    <string name="primeNumCountID">I numeri primi minori di N sono: </string>
-    <string name="euleroID">La funzione di Eulero di N è: </string>
-    <string name="nTwinsID">La N-esima coppia di numeri gemelli è: </string>
-    <string name="nPrimeID">Il numero primo in posizione N è: </string>
-    <string name="showFactID">La fattorizzazione di N è: </string>
+    <string name="primeNumCountID">Prime numbers less N are:</string>
+    <string name="euleroID">"The Euler function of N is: "</string>
+    <string name="nTwinsID">The N-th pair of prime twins numbers is:</string>
+    <string name="nPrimeID">The prime number in position N is:</string>
+    <string name="showFactID">The prime factorization of N is:</string>
+    <string name="soundOn">Sound On</string>
+    <string name="soundOff">Sound Off</string>
+    <string name="Information">Information</string>
+    <string name="AP" translatable="false">Alessandro Picco</string>
+    <string name="AM" translatable="false">Adriano Morini</string>
+    <string name="GN">TicAndTac group:</string>
+    <string name="NumberP">Yes the number is prime</string>
+    <string name="NumberNotP">No, the number is not prime</string>
+    <string name="exit">Are you shure, you want to close app?</string>
+    <string name="maxChar">Max character</string>
+    <string name="calcolatrice" translatable="false">Calcolatrice</string>
+    <string name="cronologia" translatable="false">Cronologia</string>
+    <string name="manuale_d_uso" translatable="false">Manuale d\'uso</string>
+    <string name="ChooseFunc">CHOOSE THE FUNCTION</string>
+    <string name="CleanCrono">CLEAN CHRONOLOGY</string>
+
 </resources>
 

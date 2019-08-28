@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/darkG">
+    android:background="#363636">
 
     <TextView
         android:id="@+id/titleMan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/yellow"
+        android:textColor="@color/blueSky"
         android:textSize="30dp"
         android:text="Manuale d'uso"
         android:textAllCaps="true"
@@ -33,7 +33,7 @@
         android:layout_below="@id/titleMan"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        android:textColor="@color/yellow"
+        android:textColor="@color/blueSky"
         android:text="Bottone per sapere cosa fa una funzione"/>
 
 </RelativeLayout>

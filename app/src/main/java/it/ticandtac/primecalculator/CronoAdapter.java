@@ -50,13 +50,19 @@ public class CronoAdapter extends RecyclerView.Adapter<CronoAdapter.CronoViewHol
     @Override
     public void onBindViewHolder(@NonNull CronoViewHolder cronoViewHolder, int i) {
         this.cursor.moveToPosition(i);
-        cronoViewHolder.getFunct_().setText("N = " + cursor.getString(1));
-        cronoViewHolder.getResul_().setText(this.context.getString(FunctionEnum.valueOf(cursor.getString(3)).getFunctionID()) + cursor.getString(2));
+        try{
+            cronoViewHolder.getFunct_().setText("N = " + cursor.getString(1));
+            if (FunctionEnum.valueOf(cursor.getString(3))== FunctionEnum.ISPRIME){
+                cronoViewHolder.getResul_().setText(cursor.getString(2));
+            } else{
+                cronoViewHolder.getResul_().setText(this.context.getString(FunctionEnum.valueOf(cursor.getString(3)).getFunctionID()) + cursor.getString(2));
+            }
 
+        }catch (Exception exc){
+            System.out.println(exc);
 
+        }
     }
-
-
 
     @Override
     public int getItemCount() {

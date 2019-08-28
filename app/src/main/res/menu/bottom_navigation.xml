@@ -4,16 +4,16 @@
     <item
         android:id="@+id/nav_calc"
         android:icon="@drawable/calculator"
-        android:title="Calcolatrice"/>
+        android:title="@string/calcolatrice"/>
 
     <item
         android:id="@+id/nav_cronology"
         android:icon="@drawable/crono"
-        android:title="Cronologia"/>
+        android:title="@string/cronologia"/>
 
     <item
         android:id="@+id/nav_manual"
         android:icon="@drawable/manual"
-        android:title="Manuale d'uso"/>
+        android:title="@string/manuale_d_uso"/>
 
 </menu>

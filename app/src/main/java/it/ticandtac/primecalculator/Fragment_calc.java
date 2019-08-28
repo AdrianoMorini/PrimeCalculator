@@ -155,9 +155,9 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
                 OnOff = switch_.isChecked();
                 saveData();
                 if (OnOff){
-                    Toast.makeText(MainActivity.getMainCntxt(), "Suono On", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getMainCntxt(), R.string.soundOn, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.getMainCntxt(), "Suono Off", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.getMainCntxt(), R.string.soundOff, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -173,8 +173,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.getMainCntxt())
-                        .setTitle("Informazioni")
-                        .setMessage("Gruppo TicAndTac:" + "\n\n" + "- Pinno" + "\n" + "- Drin Drin")
+                        .setTitle(R.string.Information)
+                        .setMessage(R.string.GN + "\n\n" + R.string.AP + "\n" + R.string.AM)
                         .setPositiveButton(android.R.string.yes,null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
@@ -204,10 +204,10 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     private void showPrime(Object result) {
         boolean risultato = (boolean) result;
         if (risultato){
-            TVres.setText("Il numero è primo.");
+            TVres.setText(R.string.NumberP);
         }
         else{
-            TVres.setText("Il numero non è primo.");
+            TVres.setText(R.string.NumberNotP);
         }
 
     }
@@ -329,14 +329,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
 
         boolean isInserted = myDb.insertData(Number.getText().toString(),
                 TVres.getText().toString(), functionEnum.toString());
-        if (isInserted = true){
-            Toast.makeText(MainActivity.getMainCntxt(), "Inserted", Toast.LENGTH_SHORT).show();
-
-
-        } else {
-            Toast.makeText(MainActivity.getMainCntxt(), "NotInserted", Toast.LENGTH_SHORT).show();
-        }
-
 
     }
 }

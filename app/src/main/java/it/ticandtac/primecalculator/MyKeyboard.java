@@ -17,20 +17,14 @@ import android.widget.Toast;
 
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
 
 public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
-    private Button button0;
+    private List<Button> buttons;
     private Button buttonDelete;
 
     public static Button getButtonFunc() {
@@ -55,7 +49,6 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     private Button buttonSound;
 
-    private SparseArray<String> keyValues = new SparseArray<>();
     private InputConnection inputConnection;
 
     public MyKeyboard(Context context) {
@@ -73,27 +66,42 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     @SuppressLint("CutPasteId")
     private void init(Context context, AttributeSet attrs) {
+        buttons = new ArrayList<>();
         LayoutInflater.from(context).inflate(R.layout.keyboard, this, true);
-        button1 = (Button) findViewById(R.id.button_1);
-        PushDownAnim.setPushDownAnimTo(button1).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button2 = (Button) findViewById(R.id.button_2);
-        PushDownAnim.setPushDownAnimTo(button2).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button3 = (Button) findViewById(R.id.button_3);
-        PushDownAnim.setPushDownAnimTo(button3).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button4 = (Button) findViewById(R.id.button_4);
-        PushDownAnim.setPushDownAnimTo(button4).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button5 = (Button) findViewById(R.id.button_5);
-        PushDownAnim.setPushDownAnimTo(button5).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button6 = (Button) findViewById(R.id.button_6);
-        PushDownAnim.setPushDownAnimTo(button6).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button7 = (Button) findViewById(R.id.button_7);
-        PushDownAnim.setPushDownAnimTo(button7).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button8 = (Button) findViewById(R.id.button_8);
-        PushDownAnim.setPushDownAnimTo(button8).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button9 = (Button) findViewById(R.id.button_9);
-        PushDownAnim.setPushDownAnimTo(button9).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
-        button0 = (Button) findViewById(R.id.button_0);
-        PushDownAnim.setPushDownAnimTo(button0).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
+        buttons.add((Button) findViewById(R.id.button_0));
+        buttons.add((Button) findViewById(R.id.button_1));
+        buttons.add((Button) findViewById(R.id.button_2));
+        buttons.add((Button) findViewById(R.id.button_3));
+        buttons.add((Button) findViewById(R.id.button_4));
+        buttons.add((Button) findViewById(R.id.button_5));
+        buttons.add((Button) findViewById(R.id.button_6));
+        buttons.add((Button) findViewById(R.id.button_7));
+        buttons.add((Button) findViewById(R.id.button_8));
+        buttons.add((Button) findViewById(R.id.button_9));
+        for (int i = 0; i < buttons.size(); i++){
+            final int value = i;
+            Button button = buttons.get(i);
+            PushDownAnim.setPushDownAnimTo(button).setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Fragment_calc.isOnOff()){
+                        Fragment_calc.getBeepSound().start();
+
+                    }
+
+                    if (Fragment_calc.getTVres().getText() != ""){
+                        Fragment_calc.getTVres().setText("");
+                        Fragment_calc.getNumber().setText("");
+                    }
+
+                    if (Fragment_calc.getNumber().getText().toString().equals("0")){
+                        Fragment_calc.getNumber().setText("");
+
+                    }
+                    inputConnection.commitText(Integer.toString(value, 10), 1);
+                }
+            }).setScale(0.95f);
+        }
         buttonDelete = (Button) findViewById(R.id.button_delete);
         PushDownAnim.setPushDownAnimTo(buttonDelete).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
         buttonEnter = (Button) findViewById(R.id.button_enter);
@@ -107,16 +115,9 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
         PushDownAnim.setPushDownAnimTo(buttonFunc).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(this);
 
 
-        keyValues.put(R.id.button_1, "1");
-        keyValues.put(R.id.button_2, "2");
-        keyValues.put(R.id.button_3, "3");
-        keyValues.put(R.id.button_4, "4");
-        keyValues.put(R.id.button_5, "5");
-        keyValues.put(R.id.button_6, "6");
-        keyValues.put(R.id.button_7, "7");
-        keyValues.put(R.id.button_8, "8");
-        keyValues.put(R.id.button_9, "9");
-        keyValues.put(R.id.button_0, "0");
+
+
+
 
 
 
@@ -147,7 +148,7 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
         if (view.getId() == R.id.button_off){
             new AlertDialog.Builder(MainActivity.getMainCntxt())
                     .setTitle("Exit")
-                    .setMessage("Sicuro di voler uscire?")
+                    .setMessage(R.string.exit)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             System.exit(0);                        }
@@ -165,9 +166,6 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
             Fragment_calc.getNumber().setText("");
             return;
         }
-
-
-
 
         if (view.getId() == R.id.button_func){
             if (Fragment_calc.isOnOff()){
@@ -188,11 +186,9 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
             }
         } else {
             if (Fragment_calc.getNumber().length() == 6){
-                Toast.makeText(Fragment_calc.getCalcContxt(), "Max caracter", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Fragment_calc.getCalcContxt(), R.string.maxChar, Toast.LENGTH_SHORT).show();
 
             }
-            String value = keyValues.get(view.getId());
-            inputConnection.commitText(value, 1);
         }
     }
 
