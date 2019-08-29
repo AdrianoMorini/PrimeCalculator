@@ -44,6 +44,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class Fragment_calc extends Fragment implements View.OnClickListener {
 
     private static NumberPicker picker;
+    private int min;
 
     public static TextView getTVres() {
         return TVres;
@@ -149,7 +150,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         Number.setLongClickable(true);
         Number.setMovementMethod(ArrowKeyMovementMethod.getInstance());
         Number.setText(Number.getText(), TextView.BufferType.SPANNABLE);
-        Number.setFilters(new InputFilter[]{new InputFilterMinMax("0","999999")});
 
         Typeface custom_font = Typeface.createFromAsset(MainActivity.getMainCntxt().getAssets(),  "fonts/LEDCalculator.ttf");
         TVres.setTypeface(custom_font);
