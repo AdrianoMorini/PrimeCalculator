@@ -41,6 +41,7 @@
     <string name="manuale_d_uso" translatable="false">Manuale d\'uso</string>
     <string name="ChooseFunc">CHOOSE THE FUNCTION</string>
     <string name="CleanCrono">CLEAN CHRONOLOGY</string>
+    <string name="Zero">Enter a number greater than 0</string>
 
 </resources>
 

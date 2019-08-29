@@ -231,13 +231,13 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     }
 
     private void showFact(Object result) {
-      TVres.setText("");                               //grazie Adri <3.
+      String res = "";
       List<String> risultato = (List<String>) result;
       int size = risultato.size();
       for(int i=0; i < size; i++){
-          TVres.append(risultato.get(i));
+          res += risultato.get(i);
       }
-
+      TVres.setText(res);
     }
 
     private void showNTwins(Object result) {

@@ -28,4 +28,5 @@
     <string name="maxChar">Numero massimo di caratteri</string>
     <string name="ChooseFunc">SCEGLI LA FUNZIONE</string>
     <string name="CleanCrono">PULISCI LA FUNZIONE</string>
+    <string name="Zero">Inserire un numero maggiore di 0</string>
 </resources>

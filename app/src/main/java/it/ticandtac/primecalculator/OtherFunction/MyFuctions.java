@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.ticandtac.primecalculator.Fragment.Fragment_calc;
+import it.ticandtac.primecalculator.R;
 
 
 public class MyFuctions extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class MyFuctions extends AppCompatActivity {
         SparseIntArray primeNumbers = new SparseIntArray();
 
         if (n == 0) {
-            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+            Fragment_calc.getTVres().setText(R.string.Zero);
         }
 
 
@@ -38,7 +39,7 @@ public class MyFuctions extends AppCompatActivity {
 
         for (int p = 2; p * p <= n; p++) {
             // If prime[p] is not changed, then it is a prime
-            if (prime[p] == true) {
+            if (prime[p]) {
                 // Update all multiples of p
                 for (int i = p * p; i <= n; i += p)
                     prime[i] = false;
@@ -46,7 +47,7 @@ public class MyFuctions extends AppCompatActivity {
         }
 
         for (int i = 2; i <= n; i++) {
-            if (prime[i] == true)
+            if (prime[i])
                 primeNumbers.append(i, i);
         }
 
@@ -113,7 +114,7 @@ public class MyFuctions extends AppCompatActivity {
         int index = 0;
 
         if (n == 0) {
-            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+            Fragment_calc.getTVres().setText("");
         }
 
         while (index != n) {
@@ -132,7 +133,7 @@ public class MyFuctions extends AppCompatActivity {
         int num = 1;
 
         if (n == 0) {
-            Fragment_calc.getTVres().setText("Inserire un numero maggiore di 0.");
+            Fragment_calc.getTVres().setText(R.string.Zero);
         }
 
         if (n == 1) return (int) n + 4;
