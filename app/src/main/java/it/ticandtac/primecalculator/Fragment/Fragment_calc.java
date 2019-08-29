@@ -154,6 +154,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         Typeface custom_font = Typeface.createFromAsset(MainActivity.getMainCntxt().getAssets(),  "fonts/LEDCalculator.ttf");
         TVres.setTypeface(custom_font);
         Number.setTypeface(custom_font);
+        Number.setFilters(new InputFilter[]{new InputFilterMinMax("0","9999999")});
 
 
         switch_.setOnClickListener(new View.OnClickListener() {
