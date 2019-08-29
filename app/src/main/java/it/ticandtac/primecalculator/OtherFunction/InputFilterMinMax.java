@@ -1,4 +1,4 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.OtherFunction;
 
 import android.text.InputFilter;
 import android.text.Spanned;

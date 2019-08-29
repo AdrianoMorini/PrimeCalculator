@@ -1,4 +1,4 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.Fragment;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import it.ticandtac.primecalculator.MainActivity;
+import it.ticandtac.primecalculator.R;
 
 public class Fragment_manual extends Fragment {
     @Nullable

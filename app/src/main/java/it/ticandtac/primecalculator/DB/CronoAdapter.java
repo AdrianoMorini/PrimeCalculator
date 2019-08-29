@@ -1,14 +1,16 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.DB;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import it.ticandtac.primecalculator.OtherFunction.FunctionEnum;
+import it.ticandtac.primecalculator.R;
 
 public class CronoAdapter extends RecyclerView.Adapter<CronoAdapter.CronoViewHolder> {
     private Cursor cursor;

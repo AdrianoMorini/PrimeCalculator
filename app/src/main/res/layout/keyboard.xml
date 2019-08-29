@@ -4,8 +4,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
 
         <Button
@@ -13,48 +12,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/button_4"
-            android:text="7"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-           />
+            android:background="@drawable/buttonshape_d"
+            android:text="7"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_7"
             android:layout_above="@id/button_5"
-            android:text="8"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_7"
+            android:background="@drawable/buttonshape_d"
+            android:text="8"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_8"
             android:layout_above="@id/button_6"
-            android:text="9"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_8"
+            android:background="@drawable/buttonshape_d"
+            android:text="9"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_delete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_3"
             android:layout_above="@id/button_off"
-            android:text="DEL"
-            android:background="@drawable/buttonshape_b"
-            android:textColor="@color/darkG"
             android:layout_margin="1dp"
-            />
-
+            android:layout_toEndOf="@id/button_3"
+            android:background="@drawable/buttonshape_b"
+            android:text="DEL"
+            android:textColor="@color/darkG" />
 
 
         <Button
@@ -62,47 +56,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/button_1"
-            android:text="4"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:background="@drawable/buttonshape_d"
+            android:text="4"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/button_2"
-            android:layout_toEndOf="@id/button_4"
-            android:text="5"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_4"
+            android:background="@drawable/buttonshape_d"
+            android:text="5"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/button_3"
-            android:layout_toEndOf="@id/button_5"
-            android:text="6"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_5"
+            android:background="@drawable/buttonshape_d"
+            android:text="6"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_AC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_6"
             android:layout_above="@id/button_delete"
-            android:text="AC"
-            android:background="@drawable/buttonshape_b"
-            android:textColor="@color/darkG"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_6"
+            android:background="@drawable/buttonshape_b"
+            android:text="AC"
+            android:textColor="@color/darkG" />
 
 
         <Button
@@ -110,34 +100,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/button_0"
-            android:text="1"
+            android:layout_margin="1dp"
             android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
-            android:layout_margin="1dp"/>
+            android:text="1"
+            android:textColor="@color/blueSky" />
 
 
         <Button
             android:id="@+id/button_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_1"
             android:layout_above="@id/button_enter"
-            android:text="2"
+            android:layout_margin="1dp"
+            android:layout_toEndOf="@id/button_1"
             android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
-            android:layout_margin="1dp"/>
+            android:text="2"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/button_2"
             android:layout_above="@id/button_enter"
-            android:text="3"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-        />
+            android:layout_toEndOf="@id/button_2"
+            android:background="@drawable/buttonshape_d"
+            android:text="3"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_off"
@@ -147,7 +136,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
-            android:layout_marginBottom="0dp"
+
             android:layout_toEndOf="@id/button_3"
             android:background="@drawable/buttonshape_b"
             android:text="OFF"
@@ -159,36 +148,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="0"
-            android:background="@drawable/buttonshape_d"
-            android:textColor="@color/blueSky"
             android:layout_margin="1dp"
-            />
+            android:background="@drawable/buttonshape_d"
+            android:text="0"
+            android:textColor="@color/blueSky" />
 
         <Button
             android:id="@+id/button_func"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Funzione"
-            android:layout_toEndOf="@id/button_9"
-            android:background="@drawable/buttonshape_r"
-            android:textColor="@color/darkG"
             android:layout_above="@id/button_AC"
             android:layout_margin="1dp"
-            />
+            android:layout_toEndOf="@id/button_9"
+            android:background="@drawable/buttonshape_r"
+            android:text="Funzione"
+            android:textColor="@color/darkG" />
 
         <Button
             android:id="@+id/button_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="1dp"
+            android:layout_toStartOf="@id/button_off"
             android:layout_toEndOf="@id/button_0"
             android:background="@drawable/buttonshape_b"
-            android:textColor="@color/darkG"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@id/button_off"
-            android:layout_margin="1dp"
-            />
+            android:text="Enter"
+            android:textColor="@color/darkG" />
 
 
     </RelativeLayout>

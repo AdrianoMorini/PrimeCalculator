@@ -1,4 +1,4 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.method.ArrowKeyMovementMethod;
@@ -27,9 +26,17 @@ import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
+
+import it.ticandtac.primecalculator.DB.CronoAdapter;
+import it.ticandtac.primecalculator.DB.DataBaseHelper;
+import it.ticandtac.primecalculator.OtherFunction.FunctionEnum;
+import it.ticandtac.primecalculator.OtherFunction.InputFilterMinMax;
+import it.ticandtac.primecalculator.MainActivity;
+import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
+import it.ticandtac.primecalculator.MyViews.MyKeyboard;
+import it.ticandtac.primecalculator.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -43,7 +50,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     }
 
     private static TextView TVres;
-    private  MyKeyboard keyboard;
+    private MyKeyboard keyboard;
     private  Switch switch_;
 
     public static MediaPlayer getBeepSound() {

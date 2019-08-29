@@ -1,11 +1,11 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.Fragment;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +15,11 @@ import android.widget.Button;
 
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
+
+import it.ticandtac.primecalculator.DB.CronoAdapter;
+import it.ticandtac.primecalculator.DB.DataBaseHelper;
+import it.ticandtac.primecalculator.MainActivity;
+import it.ticandtac.primecalculator.R;
 
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
 
@@ -48,7 +53,6 @@ public class Fragment_crono extends Fragment {
         this.clcCrono = view.findViewById(R.id.cleanCrono);
         myDb = new DataBaseHelper(MainActivity.getMainCntxt());
 
-
         layoutManager = new LinearLayoutManager(MainActivity.getMainCntxt());
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
@@ -57,6 +61,9 @@ public class Fragment_crono extends Fragment {
         resVDB.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new CronoAdapter(myDb.getAllData(), getCronoCntxt());
         resVDB.setAdapter(mAdapter);
+
+        RecyclerView.ItemDecoration divider = new DividerItemDecoration(getCronoCntxt(),DividerItemDecoration.VERTICAL);
+        resVDB.addItemDecoration(divider);
 
 
 

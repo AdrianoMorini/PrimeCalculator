@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import it.ticandtac.primecalculator.Fragment.Fragment_calc;
+import it.ticandtac.primecalculator.Fragment.Fragment_crono;
+import it.ticandtac.primecalculator.Fragment.Fragment_manual;
+
 
 public class MainActivity extends AppCompatActivity {
 

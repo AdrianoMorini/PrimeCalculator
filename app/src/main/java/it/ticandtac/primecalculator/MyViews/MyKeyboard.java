@@ -1,13 +1,11 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.MyViews;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
@@ -19,6 +17,10 @@ import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import it.ticandtac.primecalculator.Fragment.Fragment_calc;
+import it.ticandtac.primecalculator.MainActivity;
+import it.ticandtac.primecalculator.R;
 
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
 
@@ -86,7 +88,9 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
                 public void onClick(View v) {
                     if (Fragment_calc.isOnOff()){
                         Fragment_calc.getBeepSound().start();
-
+                    }
+                    if (Fragment_calc.getNumber().length() == 6){
+                        Toast.makeText(Fragment_calc.getCalcContxt(), R.string.maxChar, Toast.LENGTH_SHORT).show();
                     }
 
                     if (Fragment_calc.getTVres().getText() != ""){
@@ -183,11 +187,6 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
                 inputConnection.deleteSurroundingText(1, 0);
             } else {
                 inputConnection.commitText("", 1);
-            }
-        } else {
-            if (Fragment_calc.getNumber().length() == 6){
-                Toast.makeText(Fragment_calc.getCalcContxt(), R.string.maxChar, Toast.LENGTH_SHORT).show();
-
             }
         }
     }

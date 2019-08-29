@@ -1,4 +1,4 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
+
+import it.ticandtac.primecalculator.MainActivity;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 

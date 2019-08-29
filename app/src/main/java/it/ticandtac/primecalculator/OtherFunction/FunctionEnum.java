@@ -1,4 +1,6 @@
-package it.ticandtac.primecalculator;
+package it.ticandtac.primecalculator.OtherFunction;
+
+import it.ticandtac.primecalculator.R;
 
 public enum FunctionEnum {
 
