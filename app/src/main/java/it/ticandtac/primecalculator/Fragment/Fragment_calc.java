@@ -24,6 +24,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.loadingview.LoadingDialog;
+import com.github.loadingview.LoadingView;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -31,17 +34,22 @@ import java.util.List;
 
 import it.ticandtac.primecalculator.DB.CronoAdapter;
 import it.ticandtac.primecalculator.DB.DataBaseHelper;
+import it.ticandtac.primecalculator.OtherFunction.AsyncTaskCalc;
+import it.ticandtac.primecalculator.OtherFunction.AsyncTaskPayload;
 import it.ticandtac.primecalculator.OtherFunction.FunctionEnum;
 import it.ticandtac.primecalculator.OtherFunction.InputFilterMinMax;
 import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
 import it.ticandtac.primecalculator.MyViews.MyKeyboard;
 import it.ticandtac.primecalculator.R;
+import it.ticandtac.primecalculator.ShowResultInterface;
 
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class Fragment_calc extends Fragment implements View.OnClickListener {
+public class Fragment_calc extends Fragment implements View.OnClickListener, ShowResultInterface {
+
+    private LoadingDialog loadingDialog;
 
     private static NumberPicker picker;
     private int min;
@@ -53,6 +61,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
     private static TextView TVres;
     private MyKeyboard keyboard;
     private  Switch switch_;
+    private LoadingView loadingView;
 
     public static MediaPlayer getBeepSound() {
         return beepSound;
@@ -125,13 +134,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         picker.setDisplayedValues(values);
         picker.setWrapSelectorWheel(true);
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-
-                //tvResult.setText("prova: " + values[newVal]);
-            }
-        });
 
 
         Number.setRawInputType(InputType.TYPE_CLASS_TEXT);
@@ -296,33 +298,27 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         }
         FunctionEnum functionEnum = functions[picker.getValue()];
 
-        Method calcMethod = null;
 
         String value = Number.getText().toString();
 
-        if (value.isEmpty()) return;
 
-        Object result = null;
         long num = Long.valueOf(value);
 
-        try {
-            calcMethod = MyFuctions.class.getMethod(functionEnum.getFunctionName(), long.class);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
+        AsyncTaskPayload payload = new AsyncTaskPayload(functionEnum, num);
 
-        try {
-            if (calcMethod != null)result = calcMethod.invoke(MyFuctions.class, num);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        loadingDialog = LoadingDialog.Companion.get(getActivity());
+
+        AsyncTaskCalc asyncTaskCalc = new AsyncTaskCalc(payload, this);
+        loadingDialog.show();
+        asyncTaskCalc.execute();
+    }
+
+    public void showResult(Object result, FunctionEnum function) {
 
         Method showResult = null;
 
         try {
-            showResult = this.getClass().getDeclaredMethod(functionEnum.getHandleResultFun(), Object.class);
+            showResult = this.getClass().getDeclaredMethod(function.getHandleResultFun(), Object.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
@@ -336,7 +332,11 @@ public class Fragment_calc extends Fragment implements View.OnClickListener {
         }
 
         boolean isInserted = myDb.insertData(Number.getText().toString(),
-                TVres.getText().toString(), functionEnum.toString());
+                TVres.getText().toString(), function.toString());
+        loadingDialog.hide();
+    }
 
+    @Override
+    public void onPreExecute() {
     }
 }
