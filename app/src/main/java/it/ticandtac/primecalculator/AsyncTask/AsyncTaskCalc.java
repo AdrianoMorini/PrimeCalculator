@@ -1,13 +1,11 @@
-package it.ticandtac.primecalculator.OtherFunction;
+package it.ticandtac.primecalculator.AsyncTask;
 
 import android.os.AsyncTask;
-
-import com.github.loadingview.LoadingDialog;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import it.ticandtac.primecalculator.Fragment.Fragment_calc;
+import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
 import it.ticandtac.primecalculator.ShowResultInterface;
 
 public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {

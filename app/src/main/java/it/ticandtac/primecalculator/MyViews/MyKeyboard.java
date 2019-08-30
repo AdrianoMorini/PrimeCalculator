@@ -3,6 +3,7 @@ package it.ticandtac.primecalculator.MyViews;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -89,11 +90,8 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
                     if (Fragment_calc.isOnOff()){
                         Fragment_calc.getBeepSound().start();
                     }
-                    if (Fragment_calc.getNumber().length() == 6){
-                        Toast.makeText(Fragment_calc.getCalcContxt(), R.string.maxChar, Toast.LENGTH_SHORT).show();
-                    }
 
-                    if (Fragment_calc.getTVres().getText() != ""){
+                    if (Fragment_calc.getTVres().getText() != "" && !Fragment_calc.getNumber().getText().toString().equals("")){
                         Fragment_calc.getTVres().setText("");
                         Fragment_calc.getNumber().setText("");
                     }

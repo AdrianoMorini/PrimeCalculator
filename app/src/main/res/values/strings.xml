@@ -34,7 +34,7 @@
     <string name="GN">TicAndTac group:</string>
     <string name="NumberP">Yes the number is prime</string>
     <string name="NumberNotP">No, the number is not prime</string>
-    <string name="exit">Are you shure, you want to close app?</string>
+    <string name="exit">Are you sure, you want to close app?</string>
     <string name="maxChar">Max character</string>
     <string name="calcolatrice" translatable="false">Calcolatrice</string>
     <string name="cronologia" translatable="false">Cronologia</string>
@@ -42,6 +42,10 @@
     <string name="ChooseFunc">CHOOSE THE FUNCTION</string>
     <string name="CleanCrono">CLEAN CHRONOLOGY</string>
     <string name="Zero">Enter a number greater than 0</string>
+    <string name="dontShowMeAgain">Don\'t show me again</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="warnings">N-TH PAIR OF PRIME-TWINS-NUMBERS and N-TH PRIME have a upper bound because the calcolus is heavy!</string>
+    <string name="warningsTitle">WARNING !</string>
 
 </resources>
 

@@ -62,12 +62,6 @@ public class Fragment_crono extends Fragment {
         mAdapter = new CronoAdapter(myDb.getAllData(), getCronoCntxt());
         resVDB.setAdapter(mAdapter);
 
-        RecyclerView.ItemDecoration divider = new DividerItemDecoration(getCronoCntxt(),DividerItemDecoration.VERTICAL);
-        resVDB.addItemDecoration(divider);
-
-
-
-
 
         PushDownAnim.setPushDownAnimTo(clcCrono).setScale( MODE_SCALE, 0.95f  ).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +72,8 @@ public class Fragment_crono extends Fragment {
                 myDb.delete();
                 mAdapter.setCursor(myDb.getAllData());
                 mAdapter.notifyDataSetChanged();
-
-
-
             }
         });
-
-
-
 
         return view;
     }

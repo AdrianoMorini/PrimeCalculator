@@ -14,7 +14,7 @@
         android:layout_toEndOf="@id/sound"
         android:layout_below="@id/TVResult"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
         android:background="@drawable/info"
         />
 
@@ -43,7 +43,8 @@
         android:cursorVisible="false"
         android:textAlignment="textEnd"
         android:textColor="@color/darkG"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/TVResult"
@@ -133,10 +134,10 @@
         android:layout_alignTop="@+id/etNumber"
         android:layout_alignEnd="@+id/functions_"
         android:layout_alignBottom="@+id/keyboard"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="200dp"
         app:trailingcircular_animDelay="200"
         app:trailingcircular_animDuration="1200"
         app:trailingcircular_bigCircleRadius="0dp"

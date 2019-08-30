@@ -10,8 +10,9 @@
 
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:colorControlActivated">#3498A0</item>
-
     </style>
+
+
     <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:textColorPrimary">@color/blueSky</item>
     </style>

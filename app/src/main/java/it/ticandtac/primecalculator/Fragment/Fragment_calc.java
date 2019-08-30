@@ -1,8 +1,8 @@
 package it.ticandtac.primecalculator.Fragment;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
@@ -29,22 +30,19 @@ import android.widget.Toast;
 
 import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
 import com.github.loadingview.LoadingDialog;
-import com.github.loadingview.LoadingView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Objects;
 
 
 import it.ticandtac.primecalculator.DB.CronoAdapter;
 import it.ticandtac.primecalculator.DB.DataBaseHelper;
-import it.ticandtac.primecalculator.OtherFunction.AsyncTaskCalc;
-import it.ticandtac.primecalculator.OtherFunction.AsyncTaskPayload;
+import it.ticandtac.primecalculator.AsyncTask.AsyncTaskCalc;
+import it.ticandtac.primecalculator.AsyncTask.AsyncTaskPayload;
 import it.ticandtac.primecalculator.OtherFunction.FunctionEnum;
 import it.ticandtac.primecalculator.OtherFunction.InputFilterMinMax;
 import it.ticandtac.primecalculator.MainActivity;
-import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
 import it.ticandtac.primecalculator.MyViews.MyKeyboard;
 import it.ticandtac.primecalculator.R;
 import it.ticandtac.primecalculator.ShowResultInterface;
@@ -66,7 +64,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     private static TextView TVres;
     private MyKeyboard keyboard;
     private  Switch switch_;
-    private LoadingView loadingView;
+    private static CheckBox checkbox_;
+
 
     public static MediaPlayer getBeepSound() {
         return beepSound;
@@ -79,8 +78,11 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     private  static boolean OnOff;
+    private static boolean appInfoShowed = false;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String SWITCH = "switch_";
+    public static final String CHECKBOX = "checkbox_";
+
 
     public static EditText getNumber() {
         return Number;
@@ -105,6 +107,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,8 +119,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
 
-        //this.myProgBar = view.findViewById(R.id.myProgBar);
         this.myTLdots = view.findViewById(R.id.TLdots);
+
         this.picker = view.findViewById(R.id.functions_);
         this.Number = view.findViewById(R.id.etNumber);
         this.TVres = view.findViewById(R.id.TVResult);
@@ -139,6 +142,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         picker.setDisplayedValues(values);
         picker.setWrapSelectorWheel(true);
+
 
 
         Number.setRawInputType(InputType.TYPE_CLASS_TEXT);
@@ -183,7 +187,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
 
-
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,6 +196,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
                         .setPositiveButton(android.R.string.yes,null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
+
 
 
             }
@@ -215,6 +219,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         return view;
 
     }
+
+
 
     private void showPrime(Object result) {
         boolean risultato = (boolean) result;
@@ -244,7 +250,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
       for(int i=0; i < size; i++){
           res += risultato.get(i);
       }
-      TVres.setText(res);
+      TVres.setText(res);   //grazie Adri <3.
+
     }
 
     private void showNTwins(Object result) {
@@ -260,7 +267,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
     public void  saveData(){
-        SharedPreferences sharedPreferences =  MainActivity.getMainCntxt().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences =  calcContxt.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(SWITCH, switch_.isChecked());
         editor.apply();
@@ -268,13 +275,20 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     public void loadData(){
-        SharedPreferences sharedPreferences = MainActivity.getMainCntxt().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = calcContxt.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         OnOff = sharedPreferences.getBoolean(SWITCH, true);
+        appInfoShowed = sharedPreferences.getBoolean(CHECKBOX,false) || appInfoShowed;
+
+
 
     }
 
     public void updateViews(){
         switch_.setChecked(OnOff);
+        if (!appInfoShowed){
+            createAppInfoDialog().show();
+        }
+
 
     }
 
@@ -303,7 +317,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         }
         FunctionEnum functionEnum = functions[picker.getValue()];
 
-
         String value = Number.getText().toString();
 
         long num = Long.valueOf(value);
@@ -313,9 +326,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         AsyncTaskCalc asyncTaskCalc = new AsyncTaskCalc(payload, this);
 
         TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
-                calcContxt,
-                24,
-                ContextCompat.getColor(calcContxt, android.R.color.holo_blue_dark),
+                calcContxt, 24, ContextCompat.getColor(calcContxt, android.R.color.holo_blue_dark),
                 100,
                 5);
         trailingCircularDotsLoader.setAnimDuration(1200);
@@ -352,5 +363,28 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
     @Override
     public void onPreExecute() {
+    }
+
+    public Dialog createAppInfoDialog() {
+        View alertView = View.inflate(calcContxt, R.layout.app_info, null);
+        final CheckBox checkBox = alertView.findViewById(R.id.checkbox);
+        final SharedPreferences sharedPreferences = calcContxt.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(calcContxt);
+
+        builder.setView(alertView);
+        builder.setCancelable(false);
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (checkBox.isChecked()) {
+                    sharedPreferences.edit().putBoolean(CHECKBOX,checkBox.isChecked()).apply();
+
+                }
+                appInfoShowed = true;
+
+            }
+        });
+        return builder.create();
     }
 }

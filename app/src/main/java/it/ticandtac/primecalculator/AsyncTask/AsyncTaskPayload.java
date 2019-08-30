@@ -1,4 +1,6 @@
-package it.ticandtac.primecalculator.OtherFunction;
+package it.ticandtac.primecalculator.AsyncTask;
+
+import it.ticandtac.primecalculator.OtherFunction.FunctionEnum;
 
 public class AsyncTaskPayload {
     private FunctionEnum function;

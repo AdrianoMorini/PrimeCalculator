@@ -27,6 +27,9 @@
     <string name="exit">Sicuro di voler chiudere l\'app?</string>
     <string name="maxChar">Numero massimo di caratteri</string>
     <string name="ChooseFunc">SCEGLI LA FUNZIONE</string>
-    <string name="CleanCrono">PULISCI LA FUNZIONE</string>
     <string name="Zero">Inserire un numero maggiore di 0</string>
+    <string name="CleanCrono">PULISCI LA CRONOLOGIA</string>
+    <string name="dontShowMeAgain">Non mostrare più</string>
+    <string name="warnings">N-ESIMA COPPIA DI NUMERI PRIMI GEMELLI e N-ESIMO PRIMO hanno un upper bound poichè usarle con numeri troppo grandi i calcoli diventano pesanti</string>
+    <string name="warningsTitle">ATTENZIONE !</string>
 </resources>
