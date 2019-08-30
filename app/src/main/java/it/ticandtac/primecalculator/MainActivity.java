@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
+
+import com.github.loadingview.LoadingDialog;
+import com.github.loadingview.LoadingView;
 
 import it.ticandtac.primecalculator.Fragment.Fragment_calc;
 import it.ticandtac.primecalculator.Fragment.Fragment_crono;
@@ -23,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static Context MainCntxt;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

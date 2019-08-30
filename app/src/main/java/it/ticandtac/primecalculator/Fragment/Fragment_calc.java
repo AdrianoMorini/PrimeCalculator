@@ -1,5 +1,6 @@
 package it.ticandtac.primecalculator.Fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -20,16 +22,19 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
 import com.github.loadingview.LoadingDialog;
 import com.github.loadingview.LoadingView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Objects;
 
 
 import it.ticandtac.primecalculator.DB.CronoAdapter;
@@ -95,8 +100,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
     private FunctionEnum[] functions = FunctionEnum.values();
     DataBaseHelper myDb;
-
-
+    private ProgressBar myProgBar;
+    private TrailingCircularDotsLoader myTLdots;
 
 
 
@@ -111,8 +116,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
 
-
-
+        //this.myProgBar = view.findViewById(R.id.myProgBar);
+        this.myTLdots = view.findViewById(R.id.TLdots);
         this.picker = view.findViewById(R.id.functions_);
         this.Number = view.findViewById(R.id.etNumber);
         this.TVres = view.findViewById(R.id.TVResult);
@@ -301,16 +306,25 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
         String value = Number.getText().toString();
 
-
         long num = Long.valueOf(value);
 
         AsyncTaskPayload payload = new AsyncTaskPayload(functionEnum, num);
 
-        loadingDialog = LoadingDialog.Companion.get(getActivity());
-
         AsyncTaskCalc asyncTaskCalc = new AsyncTaskCalc(payload, this);
-        loadingDialog.show();
+
+        TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
+                calcContxt,
+                24,
+                ContextCompat.getColor(calcContxt, android.R.color.holo_blue_dark),
+                100,
+                5);
+        trailingCircularDotsLoader.setAnimDuration(1200);
+        trailingCircularDotsLoader.setAnimDelay(200);
+
+        myTLdots.addView(trailingCircularDotsLoader);
+
         asyncTaskCalc.execute();
+
     }
 
     public void showResult(Object result, FunctionEnum function) {
@@ -333,7 +347,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
         boolean isInserted = myDb.insertData(Number.getText().toString(),
                 TVres.getText().toString(), function.toString());
-        loadingDialog.hide();
+
     }
 
     @Override
