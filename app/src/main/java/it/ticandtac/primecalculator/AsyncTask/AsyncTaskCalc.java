@@ -1,6 +1,7 @@
 package it.ticandtac.primecalculator.AsyncTask;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -73,6 +74,7 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
         trailingCircularDotsLoader.setAnimDuration(1200);
         trailingCircularDotsLoader.setAnimDelay(200);
         Fragment_calc.getMyTLdots().addView(trailingCircularDotsLoader);
+        Fragment_calc.getMyTLdots().setBackgroundColor(Color.parseColor("#80000000"));
         Fragment_calc.getPicker().setEnabled(false);
         MyKeyboard.getButtonEnter().setClickable(false);
         MyKeyboard.getButtonAC().setClickable(false);
