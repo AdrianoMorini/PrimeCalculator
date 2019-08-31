@@ -28,7 +28,7 @@ import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
 public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     private List<Button> buttons;
-    private Button buttonDelete;
+    private static Button buttonDelete;
 
     public static Button getButtonFunc() {
         return buttonFunc;
@@ -41,7 +41,12 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
     }
 
     private static Button buttonEnter;
-    private Button buttonAC;
+
+    public static Button getButtonAC() {
+        return buttonAC;
+    }
+
+    private static Button buttonAC;
     private Button buttonOff;
 
     public static InputConnection getIc() {
@@ -65,6 +70,10 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
     public MyKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+    }
+
+    public static Button getButtonDelete() {
+        return buttonDelete;
     }
 
     @SuppressLint("CutPasteId")

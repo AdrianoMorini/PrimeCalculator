@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#363636">
 
 
@@ -11,12 +11,11 @@
         android:id="@+id/info"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_toEndOf="@id/sound"
         android:layout_below="@id/TVResult"
-        android:layout_marginTop="6dp"
         android:layout_marginStart="15dp"
-        android:background="@drawable/info"
-        />
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@id/sound"
+        android:background="@drawable/info" />
 
     <Switch
         android:id="@+id/sound"
@@ -26,9 +25,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:thumb="@drawable/ic_music_note"
         android:theme="@style/SwitchTheme"
-        />
+        android:thumb="@drawable/ic_music_note" />
 
 
     <EditText
@@ -43,41 +41,40 @@
         android:cursorVisible="false"
         android:textAlignment="textEnd"
         android:textColor="@color/darkG"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/TVResult"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/etNumber"
+        android:layout_toStartOf="@id/view4"
         android:background="#99CDCC"
         android:textAlignment="textEnd"
         android:textColor="@color/darkG"
-        android:layout_toStartOf="@id/view4"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@drawable/grad_screen_dark2"
         android:layout_alignParentTop="true"
         android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
         android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:background="@drawable/grad_screen_dark2"
 
         />
+
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/grad_screen_w1"
         android:layout_below="@id/TVResult"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="7dp"
         android:layout_marginEnd="9dp"
+        android:background="@drawable/grad_screen_w1"
 
 
         />
@@ -86,45 +83,41 @@
         android:id="@+id/view4"
         android:layout_width="3dp"
         android:layout_height="103dp"
-        android:background="@drawable/grad_screen_w2"
-        android:layout_below="@+id/view2"
         android:layout_above="@id/view3"
+        android:layout_below="@+id/view2"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="7dp"
-        />
+        android:background="@drawable/grad_screen_w2" />
 
     <it.ticandtac.primecalculator.MyViews.MyKeyboard
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
         android:layout_below="@id/functions_"
-        />
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical" />
 
     <NumberPicker
         android:id="@+id/functions_"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/chooseFunc"
-        android:descendantFocusability="blocksDescendants"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="1dp"
         android:background="#363636"
-        android:theme="@style/AppTheme.Picker">
-    </NumberPicker>
+        android:descendantFocusability="blocksDescendants"
+        android:theme="@style/AppTheme.Picker"></NumberPicker>
 
     <TextView
         android:id="@+id/chooseFunc"
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/info"
+        android:layout_marginTop="15dp"
         android:text="@string/ChooseFunc"
         android:textAlignment="center"
-        android:textColor="#D62636"
-        />
+        android:textColor="#D62636" />
 
     <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
         android:id="@+id/TLdots"
@@ -134,9 +127,9 @@
         android:layout_alignTop="@+id/etNumber"
         android:layout_alignEnd="@+id/functions_"
         android:layout_alignBottom="@+id/keyboard"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="200dp"
         app:trailingcircular_animDelay="200"
         app:trailingcircular_animDuration="1200"

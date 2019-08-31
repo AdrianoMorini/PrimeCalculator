@@ -62,7 +62,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     private static TextView TVres;
-    private MyKeyboard keyboard;
+    private static MyKeyboard keyboard;
     private  Switch switch_;
     private static CheckBox checkbox_;
 
@@ -103,10 +103,21 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     private FunctionEnum[] functions = FunctionEnum.values();
     DataBaseHelper myDb;
     private ProgressBar myProgBar;
-    private TrailingCircularDotsLoader myTLdots;
+
+    public static TrailingCircularDotsLoader getMyTLdots() {
+        return myTLdots;
+    }
+
+    private static TrailingCircularDotsLoader myTLdots;
 
 
+    public static NumberPicker getPicker() {
+        return picker;
+    }
 
+    public static MyKeyboard getKeyboard() {
+        return keyboard;
+    }
 
     @Nullable
     @Override
@@ -119,7 +130,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
 
 
-        this.myTLdots = view.findViewById(R.id.TLdots);
+        myTLdots = view.findViewById(R.id.TLdots);
 
         this.picker = view.findViewById(R.id.functions_);
         this.Number = view.findViewById(R.id.etNumber);
@@ -219,7 +230,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         return view;
 
     }
-
 
 
     private void showPrime(Object result) {
@@ -325,15 +335,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
         AsyncTaskCalc asyncTaskCalc = new AsyncTaskCalc(payload, this);
 
-        TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
-                calcContxt, 24, ContextCompat.getColor(calcContxt, android.R.color.holo_blue_dark),
-                100,
-                5);
-        trailingCircularDotsLoader.setAnimDuration(1200);
-        trailingCircularDotsLoader.setAnimDelay(200);
-
-        myTLdots.addView(trailingCircularDotsLoader);
-
         asyncTaskCalc.execute();
 
     }
@@ -363,6 +364,10 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
 
     @Override
     public void onPreExecute() {
+    }
+
+    @Override
+    public void onPostExecute(){
     }
 
     public Dialog createAppInfoDialog() {
