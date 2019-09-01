@@ -14,12 +14,12 @@
     <string name="NPrime">N-TH PRIME</string>
 
 
-    <string name="isPrimeDes">Verify if the choosen number is prime. In maths a number is prime, when the only factors are 1 and itself</string>
-    <string name="primeNumCountDes">Count how much prime numbers, are less then the choosen number</string>
-    <string name="factPrimeDes">Do the prime factorization of the choosen number. This factoring is an algebrical procedure, that allow to write a number as its numbers prime product. If the choosen number is prime the factoring coincide with itself</string>
-    <string name="euleroDes">Do the Euler function of the choosen number. In maths, the Euler function φ calculate how much numbers, that are coprime with n, there are between 1 and the choosen number n. For example, φ(8)=4 because the coprime numbers with 8 are 4: 1, 3, 5, 7</string>
-    <string name="nTwinsDes">Calculate the n-th pair of prime twins numbers, where n is the choosen number. In maths two prime numbers are twins if the subtraction between of them is equal to 2. The exeption is the couple (2,3). An example is (5,7) or (11,13) or (821,823)</string>
-    <string name="nPrimeDes">Calculate the prime number in n-th position, and n is the choosen number</string>
+    <string name="isPrimeDes">Verify if the choosen number is prime. In maths a number is prime, when the only factors are 1 and itself.</string>
+    <string name="primeNumCountDes">Count how much prime numbers, are less then the choosen number.</string>
+    <string name="factPrimeDes">Do the prime factorization of the choosen number. This factoring is an algebrical procedure, that allow to write a number as its numbers prime product. If the choosen number is prime the factoring coincide with itself.</string>
+    <string name="euleroDes">Do the Euler function of the choosen number. In maths, the Euler function φ calculate how much numbers, that are coprime with n, there are between 1 and the choosen number n. For example, φ(8)=4 because the coprime numbers with 8 are 4: 1, 3, 5, 7.</string>
+    <string name="nTwinsDes">Calculate the n-th pair of prime twins numbers, where n is the choosen number. In maths two prime numbers are twins if the subtraction between of them is equal to 2. The exeption is the couple (2,3). An example is (5,7) or (11,13) or (821,823).</string>
+    <string name="nPrimeDes">Calculate the prime number in n-th position, and n is the choosen number.</string>
 
     <string name="primeNumCountID">Prime numbers less N are:</string>
     <string name="euleroID">"The Euler function of N is: "</string>
@@ -28,9 +28,9 @@
     <string name="showFactID">The prime factorization of N is:</string>
     <string name="soundOn">Sound On</string>
     <string name="soundOff">Sound Off</string>
-    <string name="Information">Information</string>
-    <string name="AP" translatable="false">Alessandro Picco</string>
-    <string name="AM" translatable="false">Adriano Morini</string>
+    <string name="Information">INFORMATION</string>
+    <string name="AP" translatable="false">- Alessandro Picco</string>
+    <string name="AM" translatable="false">- Adriano Morini</string>
     <string name="GN">TicAndTac group:</string>
     <string name="NumberP">Yes the number is prime</string>
     <string name="NumberNotP">No, the number is not prime</string>
@@ -44,8 +44,21 @@
     <string name="Zero">Enter a number greater than 0</string>
     <string name="dontShowMeAgain">Don\'t show me again</string>
     <string name="ok" translatable="false">OK</string>
-    <string name="warnings">N-TH PAIR OF PRIME-TWINS-NUMBERS and N-TH PRIME have a upper bound because the calcolus is heavy!</string>
+    <string name="warnings">N-TH PAIR OF PRIME-TWINS-NUMBERS and N-TH PRIME have a upper bound because the calcolus is heavy! This Upper bound depends on the computing power of the device, where the app runs.</string>
     <string name="warningsTitle">WARNING !</string>
+    <string name="ticandtac_group">TicAndTac group :</string>
+    <string name="closeApp">CLOSE APPLICATION</string>
+    <string name="yes">yes</string>
+    <string name="no" translatable="false">no</string>
+    <string name="clearAll">Chronology is clear</string>
+    <string name="userGuide">USER GUIDE</string>
+    <string name="buttonFunc">FUNCTION</string>
+    <string name="buttonFuncDes">Press this button to have information about the choosen function.</string>
+    <string name="soundDes">Use this switch button to turn on or turn off sound.</string>
+    <string name="infoDes">Press this button to have information about the creators.</string>
+    <string name="excp">Insert a number</string>
+    <string name="Adv1">N-TH PAIR OF PRIME-TWINS-NUMBERS and N-TH PRIME have a upper bound because the calcolus is heavy! This Upper bound depends on the computing power of the device, where the app runs.</string>
+    <string name="Adv2">The other functions can calculate big numbers, because they are less heavy than N-TH PAIR OF PRIME-TWINS-NUMBERS and N-TH PRIME.</string>
 
 </resources>
 

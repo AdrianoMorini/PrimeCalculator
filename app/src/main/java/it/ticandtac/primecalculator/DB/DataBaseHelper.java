@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import it.ticandtac.primecalculator.MainActivity;
+import it.ticandtac.primecalculator.R;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -60,7 +61,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, null, null);
-        Toast.makeText(MainActivity.getMainCntxt(), "Clear all", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.getMainCntxt(), R.string.clearAll, Toast.LENGTH_SHORT).show();
         return true;
     }
 

@@ -8,18 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/blueSky"
+        android:textColor="@color/red"
+        android:background="@drawable/border_man"
         android:textSize="30dp"
-        android:text="Manuale d'uso"
+        android:text="@string/userGuide"
         android:textAllCaps="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="6dp"/>
+        android:layout_margin="15dp"/>
 
     <Button
         android:id="@+id/button_func_man"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Funzione"
+        android:text="@string/buttonFunc"
         android:background="@drawable/buttonshape_r"
         android:textColor="@color/darkG"
         android:layout_below="@id/titleMan"
@@ -27,13 +28,82 @@
         android:layout_marginStart="10dp"
         />
     <TextView
+        android:id="@+id/TVFuncMan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/button_func_man"
+        android:layout_toEndOf="@+id/button_func_man"
         android:layout_below="@id/titleMan"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:textColor="@color/blueSky"
-        android:text="Bottone per sapere cosa fa una funzione"/>
+        android:layout_marginEnd="5dp"
+        android:text="@string/buttonFuncDes"/>
+
+    <Switch
+        android:id="@+id/sound_man"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_func_man"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:thumb="@drawable/ic_music_note"
+        android:theme="@style/SwitchTheme"
+        />
+    <TextView
+        android:id="@+id/TVSoundMan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/button_func_man"
+        android:layout_below="@id/TVFuncMan"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/blueSky"
+        android:layout_marginEnd="5dp"
+        android:text="@string/soundDes"/>
+
+    <Button
+        android:id="@+id/info"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toEndOf="@id/sound"
+        android:layout_below="@id/sound_man"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/info"
+        />
+
+    <TextView
+        android:id="@+id/TVInfoMan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/button_func_man"
+        android:layout_below="@id/TVSoundMan"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/blueSky"
+        android:layout_marginEnd="5dp"
+        android:text="@string/infoDes"/>
+
+    <TextView
+        android:id="@+id/TVAdv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVInfoMan"
+        android:layout_marginTop="20dp"
+        android:text="@string/Adv1"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/blueSky"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TVAdv1"
+        android:text="@string/Adv2"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/blueSky"/>
+
+
 
 </RelativeLayout>

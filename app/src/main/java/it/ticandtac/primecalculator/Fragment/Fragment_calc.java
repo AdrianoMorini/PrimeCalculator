@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.media.tv.TvInputService;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -210,15 +211,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(MainActivity.getMainCntxt())
-                        .setTitle(R.string.Information)
-                        .setMessage(R.string.GN + "\n\n" + R.string.AP + "\n" + R.string.AM)
-                        .setPositiveButton(android.R.string.yes,null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-
-
-
+                createInfoDialog().show();
             }
         });
 
@@ -326,6 +319,25 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         return builder.create();
     }
 
+    public  Dialog createInfoDialog() {
+        View alertView = View.inflate(MainActivity.getMainCntxt(), R.layout.app_info, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.getMainCntxt());
+
+        TextView title = alertView.findViewById(R.id.infoTitle);
+        TextView gName = alertView.findViewById(R.id.T1);
+        TextView name1 = alertView.findViewById(R.id.T2);
+        TextView name2 = alertView.findViewById(R.id.T3);
+
+        title.setText(R.string.Information);
+        name1.setText(R.string.AP);
+        name2.setText(R.string.AM);
+        gName.setText(R.string.ticandtac_group);
+
+        builder.setView(alertView);
+        builder.setCancelable(false);
+        builder.setPositiveButton("ok", null);
+        return builder.create();
+    }
 
     //NON TOCCARE LA ONCLICK
     @Override
@@ -334,9 +346,14 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
            beepSound.start();
 
         }
+
         FunctionEnum functionEnum = functions[picker.getValue()];
 
         String value = Number.getText().toString();
+        if (value.equals("")) {
+            Toast.makeText(Fragment_calc.getCalcContxt(), R.string.excp, Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         long num = Long.valueOf(value);
 
@@ -380,7 +397,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     public Dialog createAppInfoDialog() {
-        View alertView = View.inflate(calcContxt, R.layout.app_info, null);
+        View alertView = View.inflate(calcContxt, R.layout.app_alert, null);
         final CheckBox checkBox = alertView.findViewById(R.id.checkbox);
         final SharedPreferences sharedPreferences = calcContxt.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
 

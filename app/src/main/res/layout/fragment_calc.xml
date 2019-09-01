@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#363636">
@@ -37,11 +36,13 @@
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@id/view4"
-        android:background="#99CDCC"
+        android:layout_toEndOf="@id/view5"
+        android:background="@color/blueSky"
         android:cursorVisible="false"
         android:textAlignment="textEnd"
         android:textColor="@color/darkG"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        />
 
     <TextView
         android:id="@+id/TVResult"
@@ -49,8 +50,9 @@
         android:layout_height="50dp"
         android:layout_below="@+id/etNumber"
         android:layout_toStartOf="@id/view4"
-        android:background="#99CDCC"
+        android:background="@color/blueSky"
         android:textAlignment="textEnd"
+        android:layout_toEndOf="@id/view5"
         android:textColor="@color/darkG"
         android:textSize="20sp" />
 
@@ -95,10 +97,20 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:background="#80000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"/>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="3dp"
+        android:layout_height="103dp"
+        android:background="@drawable/grad_screen_dark1"
+        android:layout_below="@+id/view2"
+        android:layout_above="@id/view3"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="7dp"
+        />
 
     <it.ticandtac.primecalculator.MyViews.MyKeyboard
         android:id="@+id/keyboard"
@@ -118,7 +130,9 @@
         android:layout_marginEnd="1dp"
         android:background="#363636"
         android:descendantFocusability="blocksDescendants"
-        android:theme="@style/AppTheme.Picker"></NumberPicker>
+        android:theme="@style/AppTheme.Picker">
+
+    </NumberPicker>
 
     <TextView
         android:id="@+id/chooseFunc"
@@ -138,15 +152,12 @@
         android:layout_alignTop="@+id/etNumber"
         android:layout_alignEnd="@+id/functions_"
         android:layout_alignBottom="@+id/keyboard"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginBottom="250dp"
         app:trailingcircular_animDelay="200"
         app:trailingcircular_animDuration="1200"
         app:trailingcircular_bigCircleRadius="0dp"
         app:trailingcircular_dotsColor="@color/loader_selected"
         app:trailingcircular_dotsRadius="0dp"
-        app:trailingcircular_noOfTrailingDots="5" />
+        app:trailingcircular_noOfTrailingDots="5"
+        android:padding="100dp"/>
 
 </RelativeLayout>

@@ -161,7 +161,7 @@
             android:layout_margin="1dp"
             android:layout_toEndOf="@id/button_9"
             android:background="@drawable/buttonshape_r"
-            android:text="Funzione"
+            android:text="@string/buttonFunc"
             android:textColor="@color/darkG" />
 
         <Button

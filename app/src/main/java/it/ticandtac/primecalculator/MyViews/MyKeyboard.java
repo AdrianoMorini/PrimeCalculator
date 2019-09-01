@@ -1,9 +1,9 @@
 package it.ticandtac.primecalculator.MyViews;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -55,7 +56,6 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
     private static InputConnection ic;
 
-    private Button buttonSound;
 
     private InputConnection inputConnection;
 
@@ -127,14 +127,6 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
 
 
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -157,18 +149,7 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
         }
 
         if (view.getId() == R.id.button_off){
-            new AlertDialog.Builder(MainActivity.getMainCntxt())
-                    .setTitle("Exit")
-                    .setMessage(R.string.exit)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            System.exit(0);                        }
-                    })
-                    .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-
-
+            createAppExitInfoDialog().show();
             return;
         }
 
@@ -196,6 +177,30 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
                 inputConnection.commitText("", 1);
             }
         }
+    }
+
+    public Dialog createAppExitInfoDialog() {
+        View alertView = View.inflate(MainActivity.getMainCntxt(), R.layout.app_exit, null);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.getMainCntxt());
+
+        TextView title = alertView.findViewById(R.id.exitTitle);
+        TextView description = alertView.findViewById(R.id.Te1);
+        title.setText(R.string.closeApp);
+        description.setText(R.string.exit);
+        builder.setNegativeButton(R.string.no,null);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                System.exit(0);
+            }
+
+        });
+
+
+        builder.setView(alertView);
+        builder.setCancelable(true);
+        return builder.create();
     }
 
     public void setInputConnection(InputConnection ic) {
