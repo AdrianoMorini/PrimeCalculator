@@ -5,23 +5,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.thekhaeng.pushdownanim.PushDownAnim;
-
-
 import it.ticandtac.primecalculator.DB.CronoAdapter;
 import it.ticandtac.primecalculator.DB.DataBaseHelper;
 import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.R;
 
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
+
+//Fragment for chronology.
 
 public class Fragment_crono extends Fragment {
 

@@ -1,24 +1,18 @@
 package it.ticandtac.primecalculator.AsyncTask;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.RelativeLayout;
-
 import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import it.ticandtac.primecalculator.Fragment.Fragment_calc;
-import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.MyViews.MyKeyboard;
 import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
-import it.ticandtac.primecalculator.R;
 import it.ticandtac.primecalculator.ShowResultInterface;
+
+//AsyncTask for execution.
 
 public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
 
@@ -29,6 +23,8 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
         this.payload = payload;
         this.showResultInterface = showResultInterface;
     }
+
+    //Background reflection.
 
     @Override
     protected Object doInBackground(Void... voids) {
@@ -57,6 +53,8 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
             100,
             5);
 
+    //Enable buttons after execution.
+
     @Override
     protected void onPostExecute(Object result){
         this.showResultInterface.showResult(result, this.payload.getFunction());
@@ -65,13 +63,14 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
         Fragment_calc.getMyTLdots().setVisibility(View.INVISIBLE);
         Fragment_calc.getMyTLdots().removeView(trailingCircularDotsLoader);
         Fragment_calc.getMyTLdots().clearAnimation();
-
         Fragment_calc.getPicker().setEnabled(true);
         MyKeyboard.getButtonEnter().setClickable(true);
         MyKeyboard.getButtonAC().setClickable(true);
         MyKeyboard.getButtonDelete().setClickable(true);
 
     }
+
+    //Disable buttons before execution.
 
     @Override
     protected void onPreExecute() {

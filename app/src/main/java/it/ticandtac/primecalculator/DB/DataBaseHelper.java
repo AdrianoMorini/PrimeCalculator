@@ -11,11 +11,12 @@ import android.widget.Toast;
 import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.R;
 
+//Creation of database.
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "FuncResult.db";
     public static final String TABLE_NAME = "FuncResult_table";
-    public static final String COL1 = "ID";
     public static final String COL2 = "FUNCTION";
     public static final String COL3 = "RESULT";
     public static final String COL4 = "FUNCTION_NAME";

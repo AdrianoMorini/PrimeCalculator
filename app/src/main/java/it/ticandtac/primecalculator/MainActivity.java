@@ -9,11 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
-
-import com.github.loadingview.LoadingDialog;
-import com.github.loadingview.LoadingView;
-
 import it.ticandtac.primecalculator.Fragment.Fragment_calc;
 import it.ticandtac.primecalculator.Fragment.Fragment_crono;
 import it.ticandtac.primecalculator.Fragment.Fragment_manual;
@@ -34,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-
-
         MainCntxt = this;
-
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -49,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Create Bottom Navigation menu.
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override

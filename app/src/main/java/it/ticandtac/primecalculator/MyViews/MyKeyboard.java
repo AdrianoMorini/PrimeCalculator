@@ -13,18 +13,15 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.thekhaeng.pushdownanim.PushDownAnim;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import it.ticandtac.primecalculator.Fragment.Fragment_calc;
 import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.R;
-
 import static com.thekhaeng.pushdownanim.PushDownAnim.MODE_SCALE;
+
+//Keyboard functions.
 
 public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
 
@@ -178,6 +175,8 @@ public class MyKeyboard extends RelativeLayout implements View.OnClickListener {
             }
         }
     }
+
+    //Alert dialog to exit.
 
     public Dialog createAppExitInfoDialog() {
         View alertView = View.inflate(MainActivity.getMainCntxt(), R.layout.app_exit, null);

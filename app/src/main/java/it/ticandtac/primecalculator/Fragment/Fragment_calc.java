@@ -1,16 +1,13 @@
 package it.ticandtac.primecalculator.Fragment;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.media.tv.TvInputService;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -24,21 +21,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
-import com.github.loadingview.LoadingDialog;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-
-
-import it.ticandtac.primecalculator.DB.CronoAdapter;
 import it.ticandtac.primecalculator.DB.DataBaseHelper;
 import it.ticandtac.primecalculator.AsyncTask.AsyncTaskCalc;
 import it.ticandtac.primecalculator.AsyncTask.AsyncTaskPayload;
@@ -48,25 +37,21 @@ import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.MyViews.MyKeyboard;
 import it.ticandtac.primecalculator.R;
 import it.ticandtac.primecalculator.ShowResultInterface;
-
 import static android.content.Context.MODE_PRIVATE;
 
+//Fragment for execution.
 
 public class Fragment_calc extends Fragment implements View.OnClickListener, ShowResultInterface {
 
-
-    private static NumberPicker picker;
-    private int min;
 
     public static TextView getTVres() {
         return TVres;
     }
 
     private static TextView TVres;
+    private static NumberPicker picker;
     private static MyKeyboard keyboard;
     private  Switch switch_;
-    private static CheckBox checkbox_;
-
 
     public static MediaPlayer getBeepSound() {
         return beepSound;
@@ -90,8 +75,6 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     private static EditText Number;
-    private int result;
-    private static boolean op;
     private  Button info;
 
     public static Context getCalcContxt() {
@@ -99,11 +82,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     }
 
     private static Context calcContxt;
-    private CronoAdapter mAdapter;
-
     private FunctionEnum[] functions = FunctionEnum.values();
     DataBaseHelper myDb;
-    private ProgressBar myProgBar;
 
     public static View getBackgroundView() {
         return backgroundView;
@@ -262,7 +242,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
       for(int i=0; i < size; i++){
           res += risultato.get(i);
       }
-      TVres.setText(res);   //grazie Adri <3.
+      TVres.setText(res);
 
     }
 
@@ -339,12 +319,13 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         return builder.create();
     }
 
-    //NON TOCCARE LA ONCLICK
+    //Execution of AsyncTask with reflection.
+
     @Override
     public void onClick(View v) {
+
         if (OnOff){
            beepSound.start();
-
         }
 
         FunctionEnum functionEnum = functions[picker.getValue()];
@@ -395,6 +376,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     @Override
     public void onPostExecute(){
     }
+
+    //Show dialog.
 
     public Dialog createAppInfoDialog() {
         View alertView = View.inflate(calcContxt, R.layout.app_alert, null);

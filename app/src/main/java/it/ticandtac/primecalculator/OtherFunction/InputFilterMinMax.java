@@ -3,6 +3,8 @@ package it.ticandtac.primecalculator.OtherFunction;
 import android.text.InputFilter;
 import android.text.Spanned;
 
+//Min and Max for EditText.
+
 public class InputFilterMinMax implements InputFilter {
 
     private int min, max;

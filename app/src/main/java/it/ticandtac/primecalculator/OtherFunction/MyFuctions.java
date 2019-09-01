@@ -11,6 +11,8 @@ import it.ticandtac.primecalculator.Fragment.Fragment_calc;
 import it.ticandtac.primecalculator.R;
 
 
+//Functions to perform.
+
 public class MyFuctions extends AppCompatActivity {
 
 

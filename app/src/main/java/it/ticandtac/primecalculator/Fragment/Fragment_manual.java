@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import it.ticandtac.primecalculator.R;
 
+//Fragment for manual.
+
 public class Fragment_manual extends Fragment {
     @Nullable
     @Override

@@ -2,6 +2,8 @@ package it.ticandtac.primecalculator.OtherFunction;
 
 import it.ticandtac.primecalculator.R;
 
+//Functions with description.
+
 public enum FunctionEnum {
 
     ISPRIME(R.string.isPrime, R.string.isPrimeDes, "IsPrime", "showPrime",0),
