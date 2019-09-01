@@ -24,6 +24,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Fragment_calc extends Fragment implements View.OnClickListener, ShowResultInterface {
 
-    private LoadingDialog loadingDialog;
 
     private static NumberPicker picker;
     private int min;
@@ -104,6 +104,12 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     DataBaseHelper myDb;
     private ProgressBar myProgBar;
 
+    public static View getBackgroundView() {
+        return backgroundView;
+    }
+
+    public static View backgroundView;
+
     public static TrailingCircularDotsLoader getMyTLdots() {
         return myTLdots;
     }
@@ -118,6 +124,7 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
     public static MyKeyboard getKeyboard() {
         return keyboard;
     }
+
 
     @Nullable
     @Override
@@ -138,6 +145,8 @@ public class Fragment_calc extends Fragment implements View.OnClickListener, Sho
         this.keyboard = view.findViewById(R.id.keyboard);
         this.switch_= view.findViewById(R.id.sound);
         this.info = view.findViewById(R.id.info);
+        this.backgroundView = view.findViewById(R.id.Vbackground);
+        backgroundView.setVisibility(View.INVISIBLE);
 
         beepSound = MediaPlayer.create(MainActivity.getMainCntxt(),R.raw.button1);
 

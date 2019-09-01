@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
 
@@ -16,6 +17,7 @@ import it.ticandtac.primecalculator.Fragment.Fragment_calc;
 import it.ticandtac.primecalculator.MainActivity;
 import it.ticandtac.primecalculator.MyViews.MyKeyboard;
 import it.ticandtac.primecalculator.OtherFunction.MyFuctions;
+import it.ticandtac.primecalculator.R;
 import it.ticandtac.primecalculator.ShowResultInterface;
 
 public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
@@ -58,9 +60,12 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
     @Override
     protected void onPostExecute(Object result){
         this.showResultInterface.showResult(result, this.payload.getFunction());
+        Fragment_calc.getPicker().setBackgroundColor(Color.parseColor("#363636"));
+        Fragment_calc.getBackgroundView().setVisibility(View.INVISIBLE);
         Fragment_calc.getMyTLdots().setVisibility(View.INVISIBLE);
         Fragment_calc.getMyTLdots().removeView(trailingCircularDotsLoader);
         Fragment_calc.getMyTLdots().clearAnimation();
+
         Fragment_calc.getPicker().setEnabled(true);
         MyKeyboard.getButtonEnter().setClickable(true);
         MyKeyboard.getButtonAC().setClickable(true);
@@ -70,11 +75,12 @@ public class AsyncTaskCalc extends AsyncTask<Void, Void, Object> {
 
     @Override
     protected void onPreExecute() {
+        Fragment_calc.getPicker().setBackgroundColor(Color.parseColor("#10000000"));
+        Fragment_calc.getBackgroundView().setVisibility(View.VISIBLE);
         Fragment_calc.getMyTLdots().setVisibility(View.VISIBLE);
         trailingCircularDotsLoader.setAnimDuration(1200);
         trailingCircularDotsLoader.setAnimDelay(200);
         Fragment_calc.getMyTLdots().addView(trailingCircularDotsLoader);
-        Fragment_calc.getMyTLdots().setBackgroundColor(Color.parseColor("#80000000"));
         Fragment_calc.getPicker().setEnabled(false);
         MyKeyboard.getButtonEnter().setClickable(false);
         MyKeyboard.getButtonAC().setClickable(false);
